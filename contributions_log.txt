@@ -9,3 +9,4 @@ Contribution entry: 2025-05-22T20:15:11.818638 - test: add unit tests for credit
 Contribution entry: 2025-05-23T16:49:45.818638 - feat: add custom regex filter support
 Contribution entry: 2025-05-23T21:54:49.818638 - fix: correct overlapping entity merge logic
 Contribution entry: 2025-05-23T21:47:05.818638 - feat: add custom regex filter support
+Contribution entry: 2025-05-23T17:08:52.818638 - style: improve terminal dashboard HUD layout
