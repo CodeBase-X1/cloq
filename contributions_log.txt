@@ -12,3 +12,4 @@ Contribution entry: 2025-05-23T21:47:05.818638 - feat: add custom regex filter s
 Contribution entry: 2025-05-23T17:08:52.818638 - style: improve terminal dashboard HUD layout
 Contribution entry: 2025-05-28T16:14:11.818638 - docs: update installation steps in README
 Contribution entry: 2025-05-28T13:55:24.818638 - test: increase test coverage for proxy server
+Contribution entry: 2025-05-29T12:46:39.818638 - fix: handle null responses in upstream client
