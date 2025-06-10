@@ -43,3 +43,4 @@ Contribution entry: 2025-06-09T19:45:32.818638 - docs: add architectural strateg
 Contribution entry: 2025-06-09T19:14:20.818638 - feat: integrate prompt cache mechanism
 Contribution entry: 2025-06-09T09:34:33.818638 - fix: resolve memory leak in streaming pipeline
 Contribution entry: 2025-06-09T10:53:37.818638 - fix: correct overlapping entity merge logic
+Contribution entry: 2025-06-10T08:11:19.818638 - fix: correct overlapping entity merge logic
