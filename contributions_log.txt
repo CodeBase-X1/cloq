@@ -45,3 +45,4 @@ Contribution entry: 2025-06-09T09:34:33.818638 - fix: resolve memory leak in str
 Contribution entry: 2025-06-09T10:53:37.818638 - fix: correct overlapping entity merge logic
 Contribution entry: 2025-06-10T08:11:19.818638 - fix: correct overlapping entity merge logic
 Contribution entry: 2025-06-10T19:09:20.818638 - docs: clarify licensing in LICENSE file
+Contribution entry: 2025-06-14T16:34:37.818638 - feat: implement network CIDR scanner
