@@ -53,3 +53,4 @@ Contribution entry: 2025-06-15T18:30:01.818638 - test: add unit tests for credit
 Contribution entry: 2025-06-15T11:43:26.818638 - feat: implement network CIDR scanner
 Contribution entry: 2025-06-16T09:14:51.818638 - feat: add custom regex filter support
 Contribution entry: 2025-06-16T17:23:59.818638 - refactor: abstract session storage manager
+Contribution entry: 2025-06-16T12:37:37.818638 - docs: clarify licensing in LICENSE file
