@@ -51,3 +51,4 @@ Contribution entry: 2025-06-14T11:03:46.818638 - fix: correct host binding in CL
 Contribution entry: 2025-06-14T21:20:21.818638 - perf: accelerate regex matching engine
 Contribution entry: 2025-06-15T18:30:01.818638 - test: add unit tests for credit card detector
 Contribution entry: 2025-06-15T11:43:26.818638 - feat: implement network CIDR scanner
+Contribution entry: 2025-06-16T09:14:51.818638 - feat: add custom regex filter support
