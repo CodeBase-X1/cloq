@@ -60,3 +60,4 @@ Contribution entry: 2025-06-17T18:35:39.818638 - docs: clarify licensing in LICE
 Contribution entry: 2025-06-17T17:52:04.818638 - feat: implement network CIDR scanner
 Contribution entry: 2025-06-17T17:54:09.818638 - refactor: optimize entropy calculation speed
 Contribution entry: 2025-06-17T08:41:14.818638 - style: improve terminal dashboard HUD layout
+Contribution entry: 2025-06-17T20:41:02.818638 - feat: add custom regex filter support
