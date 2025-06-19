@@ -66,3 +66,4 @@ Contribution entry: 2025-06-18T16:45:20.818638 - fix: correct overlapping entity
 Contribution entry: 2025-06-18T10:37:02.818638 - test: increase test coverage for proxy server
 Contribution entry: 2025-06-18T11:34:21.818638 - feat: integrate prompt cache mechanism
 Contribution entry: 2025-06-19T09:49:28.818638 - fix: correct host binding in CLI startup
+Contribution entry: 2025-06-19T13:50:32.818638 - feat: support custom AWS endpoints
