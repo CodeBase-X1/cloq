@@ -70,3 +70,4 @@ Contribution entry: 2025-06-19T13:50:32.818638 - feat: support custom AWS endpoi
 Contribution entry: 2025-06-19T13:29:20.818638 - fix: handle null responses in upstream client
 Contribution entry: 2025-06-19T12:22:30.818638 - test: mock external LLM API calls in test suite
 Contribution entry: 2025-06-19T08:52:17.818638 - feat: support custom AWS endpoints
+Contribution entry: 2025-06-24T17:21:47.818638 - docs: add architectural strategy blueprint
