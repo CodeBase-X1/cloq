@@ -86,3 +86,4 @@ Contribution entry: 2025-06-27T15:47:35.818638 - test: increase test coverage fo
 Contribution entry: 2025-06-27T09:52:40.818638 - fix: resolve memory leak in streaming pipeline
 Contribution entry: 2025-06-28T08:37:00.818638 - test: mock external LLM API calls in test suite
 Contribution entry: 2025-06-28T17:44:48.818638 - perf: accelerate regex matching engine
+Contribution entry: 2025-06-29T17:16:00.818638 - docs: update installation steps in README
