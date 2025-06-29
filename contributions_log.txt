@@ -89,3 +89,4 @@ Contribution entry: 2025-06-28T17:44:48.818638 - perf: accelerate regex matching
 Contribution entry: 2025-06-29T17:16:00.818638 - docs: update installation steps in README
 Contribution entry: 2025-06-29T17:38:34.818638 - feat: implement network CIDR scanner
 Contribution entry: 2025-06-29T09:00:01.818638 - fix: resolve memory leak in streaming pipeline
+Contribution entry: 2025-06-29T09:52:57.818638 - feat: add custom regex filter support
