@@ -97,3 +97,4 @@ Contribution entry: 2025-06-30T19:34:00.818638 - fix: handle null responses in u
 Contribution entry: 2025-06-30T08:21:55.818638 - perf: accelerate regex matching engine
 Contribution entry: 2025-07-01T20:23:52.818638 - docs: add architectural strategy blueprint
 Contribution entry: 2025-07-01T13:04:04.818638 - docs: add architectural strategy blueprint
+Contribution entry: 2025-07-01T16:13:57.818638 - fix: correct host binding in CLI startup
