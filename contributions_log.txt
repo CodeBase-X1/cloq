@@ -122,3 +122,4 @@ Contribution entry: 2025-07-10T13:57:42.818638 - test: increase test coverage fo
 Contribution entry: 2025-07-10T19:18:03.818638 - feat: add custom regex filter support
 Contribution entry: 2025-07-10T14:46:55.818638 - fix: correct overlapping entity merge logic
 Contribution entry: 2025-07-11T16:40:31.818638 - test: add unit tests for credit card detector
+Contribution entry: 2025-07-11T10:34:34.818638 - style: format codebase with black and ruff
