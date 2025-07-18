@@ -134,3 +134,4 @@ Contribution entry: 2025-07-16T16:08:51.818638 - feat: add custom regex filter s
 Contribution entry: 2025-07-16T21:54:34.818638 - fix: resolve memory leak in streaming pipeline
 Contribution entry: 2025-07-16T11:29:20.818638 - feat: integrate prompt cache mechanism
 Contribution entry: 2025-07-18T16:10:31.818638 - refactor: optimize entropy calculation speed
+Contribution entry: 2025-07-18T09:12:19.818638 - fix: correct host binding in CLI startup
