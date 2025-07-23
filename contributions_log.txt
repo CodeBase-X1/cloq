@@ -143,3 +143,4 @@ Contribution entry: 2025-07-21T09:59:20.818638 - fix: correct host binding in CL
 Contribution entry: 2025-07-21T10:32:05.818638 - test: add unit tests for credit card detector
 Contribution entry: 2025-07-23T17:17:48.818638 - docs: clarify licensing in LICENSE file
 Contribution entry: 2025-07-23T21:57:28.818638 - feat: support custom AWS endpoints
+Contribution entry: 2025-07-23T14:41:45.818638 - fix: resolve memory leak in streaming pipeline
