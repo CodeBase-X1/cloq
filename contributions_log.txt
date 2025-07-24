@@ -149,3 +149,4 @@ Contribution entry: 2025-07-23T09:45:14.818638 - feat: add custom regex filter s
 Contribution entry: 2025-07-23T10:54:11.818638 - test: mock external LLM API calls in test suite
 Contribution entry: 2025-07-24T19:46:24.818638 - perf: accelerate regex matching engine
 Contribution entry: 2025-07-24T14:58:51.818638 - feat: integrate prompt cache mechanism
+Contribution entry: 2025-07-24T19:54:01.818638 - fix: correct host binding in CLI startup
