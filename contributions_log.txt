@@ -147,3 +147,4 @@ Contribution entry: 2025-07-23T14:41:45.818638 - fix: resolve memory leak in str
 Contribution entry: 2025-07-23T20:48:27.818638 - fix: correct overlapping entity merge logic
 Contribution entry: 2025-07-23T09:45:14.818638 - feat: add custom regex filter support
 Contribution entry: 2025-07-23T10:54:11.818638 - test: mock external LLM API calls in test suite
+Contribution entry: 2025-07-24T19:46:24.818638 - perf: accelerate regex matching engine
