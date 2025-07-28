@@ -156,3 +156,4 @@ Contribution entry: 2025-07-24T14:09:17.818638 - style: improve terminal dashboa
 Contribution entry: 2025-07-25T09:05:57.818638 - style: improve terminal dashboard HUD layout
 Contribution entry: 2025-07-28T17:37:59.818638 - feat: support custom AWS endpoints
 Contribution entry: 2025-07-28T13:20:27.818638 - feat: support custom AWS endpoints
+Contribution entry: 2025-07-28T14:49:13.818638 - docs: clarify licensing in LICENSE file
