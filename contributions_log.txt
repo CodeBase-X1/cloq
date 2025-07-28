@@ -158,3 +158,4 @@ Contribution entry: 2025-07-28T17:37:59.818638 - feat: support custom AWS endpoi
 Contribution entry: 2025-07-28T13:20:27.818638 - feat: support custom AWS endpoints
 Contribution entry: 2025-07-28T14:49:13.818638 - docs: clarify licensing in LICENSE file
 Contribution entry: 2025-07-28T12:29:27.818638 - feat: implement network CIDR scanner
+Contribution entry: 2025-07-28T11:35:25.818638 - test: add unit tests for credit card detector
