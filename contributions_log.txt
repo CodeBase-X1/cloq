@@ -154,3 +154,4 @@ Contribution entry: 2025-07-24T19:15:15.818638 - docs: clarify licensing in LICE
 Contribution entry: 2025-07-24T17:17:17.818638 - test: increase test coverage for proxy server
 Contribution entry: 2025-07-24T14:09:17.818638 - style: improve terminal dashboard HUD layout
 Contribution entry: 2025-07-25T09:05:57.818638 - style: improve terminal dashboard HUD layout
+Contribution entry: 2025-07-28T17:37:59.818638 - feat: support custom AWS endpoints
