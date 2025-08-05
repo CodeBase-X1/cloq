@@ -184,3 +184,4 @@ Contribution entry: 2025-08-04T12:01:46.818638 - style: format codebase with bla
 Contribution entry: 2025-08-04T08:41:27.818638 - feat: support custom AWS endpoints
 Contribution entry: 2025-08-05T15:36:13.818638 - docs: clarify licensing in LICENSE file
 Contribution entry: 2025-08-05T17:49:54.818638 - style: format codebase with black and ruff
+Contribution entry: 2025-08-05T11:16:02.818638 - test: mock external LLM API calls in test suite
