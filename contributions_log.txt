@@ -186,3 +186,4 @@ Contribution entry: 2025-08-05T15:36:13.818638 - docs: clarify licensing in LICE
 Contribution entry: 2025-08-05T17:49:54.818638 - style: format codebase with black and ruff
 Contribution entry: 2025-08-05T11:16:02.818638 - test: mock external LLM API calls in test suite
 Contribution entry: 2025-08-05T20:54:42.818638 - docs: update installation steps in README
+Contribution entry: 2025-08-06T18:22:11.818638 - docs: update installation steps in README
