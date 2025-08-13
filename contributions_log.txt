@@ -197,3 +197,4 @@ Contribution entry: 2025-08-08T14:25:45.818638 - test: add unit tests for credit
 Contribution entry: 2025-08-12T16:42:59.818638 - refactor: abstract session storage manager
 Contribution entry: 2025-08-12T21:00:01.818638 - refactor: abstract session storage manager
 Contribution entry: 2025-08-12T18:14:12.818638 - docs: clarify licensing in LICENSE file
+Contribution entry: 2025-08-13T15:15:30.818638 - feat: implement network CIDR scanner
