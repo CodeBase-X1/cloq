@@ -227,3 +227,4 @@ Contribution entry: 2025-08-21T14:12:58.818638 - refactor: abstract session stor
 Contribution entry: 2025-08-21T19:53:04.818638 - test: increase test coverage for proxy server
 Contribution entry: 2025-08-21T16:20:32.818638 - fix: correct overlapping entity merge logic
 Contribution entry: 2025-08-22T13:24:27.818638 - docs: clarify licensing in LICENSE file
+Contribution entry: 2025-08-22T21:27:29.818638 - fix: handle null responses in upstream client
