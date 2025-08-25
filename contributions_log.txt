@@ -231,3 +231,4 @@ Contribution entry: 2025-08-22T21:27:29.818638 - fix: handle null responses in u
 Contribution entry: 2025-08-22T13:42:21.818638 - refactor: abstract session storage manager
 Contribution entry: 2025-08-24T12:11:57.818638 - fix: resolve memory leak in streaming pipeline
 Contribution entry: 2025-08-25T16:41:05.818638 - feat: support custom AWS endpoints
+Contribution entry: 2025-08-25T15:24:09.818638 - fix: correct host binding in CLI startup
