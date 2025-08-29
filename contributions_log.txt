@@ -238,3 +238,4 @@ Contribution entry: 2025-08-28T15:48:56.818638 - perf: accelerate regex matching
 Contribution entry: 2025-08-28T14:55:59.818638 - test: mock external LLM API calls in test suite
 Contribution entry: 2025-08-28T10:37:59.818638 - fix: resolve memory leak in streaming pipeline
 Contribution entry: 2025-08-28T21:22:38.818638 - fix: correct host binding in CLI startup
+Contribution entry: 2025-08-29T14:49:35.818638 - fix: handle null responses in upstream client
