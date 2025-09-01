@@ -245,3 +245,4 @@ Contribution entry: 2025-08-29T10:10:06.818638 - refactor: abstract session stor
 Contribution entry: 2025-08-29T20:03:03.818638 - docs: clarify licensing in LICENSE file
 Contribution entry: 2025-08-29T16:21:50.818638 - fix: correct host binding in CLI startup
 Contribution entry: 2025-09-01T10:05:25.818638 - test: mock external LLM API calls in test suite
+Contribution entry: 2025-09-01T13:06:29.818638 - refactor: abstract session storage manager
