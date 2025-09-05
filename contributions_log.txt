@@ -258,3 +258,4 @@ Contribution entry: 2025-09-04T13:26:21.818638 - test: mock external LLM API cal
 Contribution entry: 2025-09-04T09:17:03.818638 - fix: resolve memory leak in streaming pipeline
 Contribution entry: 2025-09-04T21:23:50.818638 - feat: add custom regex filter support
 Contribution entry: 2025-09-04T19:43:00.818638 - docs: update installation steps in README
+Contribution entry: 2025-09-05T10:05:44.818638 - feat: support custom AWS endpoints
