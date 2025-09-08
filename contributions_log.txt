@@ -262,3 +262,4 @@ Contribution entry: 2025-09-05T10:05:44.818638 - feat: support custom AWS endpoi
 Contribution entry: 2025-09-05T15:51:22.818638 - test: add unit tests for credit card detector
 Contribution entry: 2025-09-08T17:56:44.818638 - docs: add architectural strategy blueprint
 Contribution entry: 2025-09-08T11:17:33.818638 - fix: correct overlapping entity merge logic
+Contribution entry: 2025-09-08T13:01:52.818638 - docs: update installation steps in README
