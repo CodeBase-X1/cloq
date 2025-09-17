@@ -275,3 +275,4 @@ Contribution entry: 2025-09-14T13:47:36.818638 - feat: add custom regex filter s
 Contribution entry: 2025-09-14T14:57:54.818638 - fix: correct host binding in CLI startup
 Contribution entry: 2025-09-15T12:43:35.818638 - docs: clarify licensing in LICENSE file
 Contribution entry: 2025-09-17T18:25:55.818638 - style: format codebase with black and ruff
+Contribution entry: 2025-09-17T09:33:02.818638 - refactor: abstract session storage manager
