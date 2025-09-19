@@ -280,3 +280,4 @@ Contribution entry: 2025-09-17T11:06:00.818638 - refactor: abstract session stor
 Contribution entry: 2025-09-18T20:32:25.818638 - feat: implement network CIDR scanner
 Contribution entry: 2025-09-18T17:59:42.818638 - feat: implement network CIDR scanner
 Contribution entry: 2025-09-18T09:24:50.818638 - fix: handle null responses in upstream client
+Contribution entry: 2025-09-19T14:59:17.818638 - docs: update installation steps in README
