@@ -296,3 +296,4 @@ Contribution entry: 2025-09-24T10:28:31.818638 - feat: integrate prompt cache me
 Contribution entry: 2025-09-25T17:50:57.818638 - fix: correct overlapping entity merge logic
 Contribution entry: 2025-09-25T11:03:18.818638 - feat: support custom AWS endpoints
 Contribution entry: 2025-09-26T21:20:36.818638 - style: format codebase with black and ruff
+Contribution entry: 2025-09-26T19:54:12.818638 - feat: support custom AWS endpoints
