@@ -308,3 +308,4 @@ Contribution entry: 2025-09-28T21:26:12.818638 - feat: add custom regex filter s
 Contribution entry: 2025-09-28T15:02:32.818638 - refactor: abstract session storage manager
 Contribution entry: 2025-09-28T10:34:49.818638 - feat: support custom AWS endpoints
 Contribution entry: 2025-09-30T19:46:02.818638 - test: increase test coverage for proxy server
+Contribution entry: 2025-09-30T20:42:12.818638 - docs: clarify licensing in LICENSE file
