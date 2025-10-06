@@ -314,3 +314,4 @@ Contribution entry: 2025-10-02T17:53:55.818638 - test: add unit tests for credit
 Contribution entry: 2025-10-02T14:09:38.818638 - style: format codebase with black and ruff
 Contribution entry: 2025-10-03T16:36:33.818638 - fix: correct overlapping entity merge logic
 Contribution entry: 2025-10-03T12:27:18.818638 - refactor: optimize entropy calculation speed
+Contribution entry: 2025-10-06T13:41:31.818638 - docs: clarify licensing in LICENSE file
