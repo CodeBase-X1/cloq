@@ -317,3 +317,4 @@ Contribution entry: 2025-10-03T12:27:18.818638 - refactor: optimize entropy calc
 Contribution entry: 2025-10-06T13:41:31.818638 - docs: clarify licensing in LICENSE file
 Contribution entry: 2025-10-06T10:36:32.818638 - chore: update poetry dependencies
 Contribution entry: 2025-10-07T13:27:16.818638 - test: add unit tests for credit card detector
+Contribution entry: 2025-10-07T14:45:42.818638 - docs: add architectural strategy blueprint
