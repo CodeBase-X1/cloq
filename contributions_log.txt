@@ -321,3 +321,4 @@ Contribution entry: 2025-10-07T14:45:42.818638 - docs: add architectural strateg
 Contribution entry: 2025-10-09T15:25:00.818638 - fix: correct overlapping entity merge logic
 Contribution entry: 2025-10-09T16:47:57.818638 - feat: support custom AWS endpoints
 Contribution entry: 2025-10-09T14:57:45.818638 - fix: correct host binding in CLI startup
+Contribution entry: 2025-10-09T08:21:58.818638 - fix: correct host binding in CLI startup
