@@ -335,3 +335,4 @@ Contribution entry: 2025-10-13T16:32:02.818638 - feat: add custom regex filter s
 Contribution entry: 2025-10-13T08:23:43.818638 - feat: add custom regex filter support
 Contribution entry: 2025-10-13T10:59:45.818638 - feat: support custom AWS endpoints
 Contribution entry: 2025-10-13T12:26:01.818638 - refactor: optimize entropy calculation speed
+Contribution entry: 2025-10-14T15:13:49.818638 - fix: handle null responses in upstream client
