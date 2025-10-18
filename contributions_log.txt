@@ -339,3 +339,4 @@ Contribution entry: 2025-10-14T15:13:49.818638 - fix: handle null responses in u
 Contribution entry: 2025-10-15T18:36:07.818638 - fix: correct overlapping entity merge logic
 Contribution entry: 2025-10-15T19:55:55.818638 - refactor: abstract session storage manager
 Contribution entry: 2025-10-18T18:25:53.818638 - fix: resolve memory leak in streaming pipeline
+Contribution entry: 2025-10-18T16:41:11.818638 - fix: resolve memory leak in streaming pipeline
