@@ -349,3 +349,4 @@ Contribution entry: 2025-10-22T18:07:24.818638 - chore: update poetry dependenci
 Contribution entry: 2025-10-22T17:55:11.818638 - fix: resolve memory leak in streaming pipeline
 Contribution entry: 2025-10-22T12:05:30.818638 - chore: update poetry dependencies
 Contribution entry: 2025-10-22T11:48:02.818638 - refactor: abstract session storage manager
+Contribution entry: 2025-10-23T10:32:18.818638 - fix: correct overlapping entity merge logic
