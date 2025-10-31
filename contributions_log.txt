@@ -355,3 +355,4 @@ Contribution entry: 2025-10-26T20:49:12.818638 - perf: accelerate regex matching
 Contribution entry: 2025-10-29T20:12:26.818638 - chore: update poetry dependencies
 Contribution entry: 2025-10-29T14:08:58.818638 - test: mock external LLM API calls in test suite
 Contribution entry: 2025-10-29T12:56:35.818638 - style: format codebase with black and ruff
+Contribution entry: 2025-10-31T16:30:11.818638 - fix: handle null responses in upstream client
