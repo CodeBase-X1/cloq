@@ -389,3 +389,4 @@ Contribution entry: 2025-11-10T15:05:27.818638 - refactor: optimize entropy calc
 Contribution entry: 2025-11-10T17:30:34.818638 - feat: implement network CIDR scanner
 Contribution entry: 2025-11-10T11:44:55.818638 - perf: accelerate regex matching engine
 Contribution entry: 2025-11-12T11:53:47.818638 - feat: add custom regex filter support
+Contribution entry: 2025-11-12T21:57:26.818638 - test: add unit tests for credit card detector
