@@ -391,3 +391,4 @@ Contribution entry: 2025-11-10T11:44:55.818638 - perf: accelerate regex matching
 Contribution entry: 2025-11-12T11:53:47.818638 - feat: add custom regex filter support
 Contribution entry: 2025-11-12T21:57:26.818638 - test: add unit tests for credit card detector
 Contribution entry: 2025-11-12T20:42:47.818638 - fix: handle null responses in upstream client
+Contribution entry: 2025-11-13T14:10:01.818638 - test: mock external LLM API calls in test suite
