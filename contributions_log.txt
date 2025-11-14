@@ -398,3 +398,4 @@ Contribution entry: 2025-11-13T21:13:27.818638 - fix: handle null responses in u
 Contribution entry: 2025-11-13T13:49:38.818638 - refactor: optimize entropy calculation speed
 Contribution entry: 2025-11-14T12:33:08.818638 - chore: update poetry dependencies
 Contribution entry: 2025-11-14T13:20:13.818638 - fix: correct host binding in CLI startup
+Contribution entry: 2025-11-14T14:13:07.818638 - fix: resolve memory leak in streaming pipeline
