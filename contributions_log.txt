@@ -420,3 +420,4 @@ Contribution entry: 2025-11-22T08:00:42.818638 - docs: add architectural strateg
 Contribution entry: 2025-11-22T13:44:30.818638 - feat: implement network CIDR scanner
 Contribution entry: 2025-11-23T10:10:03.818638 - docs: clarify licensing in LICENSE file
 Contribution entry: 2025-11-23T12:00:47.818638 - fix: correct host binding in CLI startup
+Contribution entry: 2025-11-23T11:18:14.818638 - fix: resolve memory leak in streaming pipeline
