@@ -432,3 +432,4 @@ Contribution entry: 2025-11-27T12:52:28.818638 - test: increase test coverage fo
 Contribution entry: 2025-11-28T20:36:05.818638 - fix: correct overlapping entity merge logic
 Contribution entry: 2025-12-01T08:58:47.818638 - fix: correct overlapping entity merge logic
 Contribution entry: 2025-12-01T13:32:46.818638 - test: add unit tests for credit card detector
+Contribution entry: 2025-12-03T18:15:14.818638 - fix: handle null responses in upstream client
