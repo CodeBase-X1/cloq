@@ -439,3 +439,4 @@ Contribution entry: 2025-12-04T18:05:56.818638 - fix: resolve memory leak in str
 Contribution entry: 2025-12-04T19:55:38.818638 - docs: add architectural strategy blueprint
 Contribution entry: 2025-12-05T21:11:26.818638 - refactor: abstract session storage manager
 Contribution entry: 2025-12-05T17:29:57.818638 - feat: support custom AWS endpoints
+Contribution entry: 2025-12-05T08:19:59.818638 - docs: clarify licensing in LICENSE file
