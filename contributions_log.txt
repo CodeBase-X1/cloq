@@ -444,3 +444,4 @@ Contribution entry: 2025-12-05T20:16:07.818638 - fix: correct overlapping entity
 Contribution entry: 2025-12-05T20:37:19.818638 - test: mock external LLM API calls in test suite
 Contribution entry: 2025-12-05T08:42:12.818638 - docs: update installation steps in README
 Contribution entry: 2025-12-08T15:48:44.818638 - fix: handle null responses in upstream client
+Contribution entry: 2025-12-08T10:32:39.818638 - refactor: optimize entropy calculation speed
