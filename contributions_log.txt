@@ -483,3 +483,4 @@ Contribution entry: 2025-12-21T18:31:10.818638 - feat: add custom regex filter s
 Contribution entry: 2025-12-21T20:42:36.818638 - perf: accelerate regex matching engine
 Contribution entry: 2025-12-21T09:29:23.818638 - chore: update poetry dependencies
 Contribution entry: 2025-12-21T13:21:00.818638 - fix: resolve memory leak in streaming pipeline
+Contribution entry: 2025-12-22T20:19:30.818638 - fix: correct host binding in CLI startup
