@@ -488,3 +488,4 @@ Contribution entry: 2025-12-22T12:31:41.818638 - test: increase test coverage fo
 Contribution entry: 2025-12-23T19:41:53.818638 - style: format codebase with black and ruff
 Contribution entry: 2025-12-23T21:13:23.818638 - feat: add custom regex filter support
 Contribution entry: 2025-12-24T11:14:09.818638 - fix: correct host binding in CLI startup
+Contribution entry: 2025-12-24T17:37:40.818638 - fix: correct overlapping entity merge logic
