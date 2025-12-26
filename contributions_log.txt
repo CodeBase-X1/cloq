@@ -495,3 +495,4 @@ Contribution entry: 2025-12-25T10:48:43.818638 - chore: update poetry dependenci
 Contribution entry: 2025-12-25T13:59:14.818638 - refactor: abstract session storage manager
 Contribution entry: 2025-12-26T08:57:36.818638 - test: increase test coverage for proxy server
 Contribution entry: 2025-12-26T08:54:38.818638 - test: increase test coverage for proxy server
+Contribution entry: 2025-12-26T15:25:37.818638 - docs: update installation steps in README
