@@ -518,3 +518,4 @@ Contribution entry: 2025-12-31T08:59:29.818638 - feat: support custom AWS endpoi
 Contribution entry: 2025-12-31T08:30:19.818638 - style: format codebase with black and ruff
 Contribution entry: 2026-01-01T19:00:01.818638 - perf: accelerate regex matching engine
 Contribution entry: 2026-01-01T11:20:07.818638 - docs: clarify licensing in LICENSE file
+Contribution entry: 2026-01-01T10:04:55.818638 - fix: correct overlapping entity merge logic
