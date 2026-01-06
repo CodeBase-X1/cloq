@@ -530,3 +530,4 @@ Contribution entry: 2026-01-04T19:27:24.818638 - test: add unit tests for credit
 Contribution entry: 2026-01-04T13:21:23.818638 - style: improve terminal dashboard HUD layout
 Contribution entry: 2026-01-06T21:18:14.818638 - docs: update installation steps in README
 Contribution entry: 2026-01-06T10:31:55.818638 - test: increase test coverage for proxy server
+Contribution entry: 2026-01-06T10:33:00.818638 - fix: correct overlapping entity merge logic
