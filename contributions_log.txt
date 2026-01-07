@@ -536,3 +536,4 @@ Contribution entry: 2026-01-06T18:18:00.818638 - fix: handle null responses in u
 Contribution entry: 2026-01-06T12:10:42.818638 - perf: accelerate regex matching engine
 Contribution entry: 2026-01-07T14:24:42.818638 - test: add unit tests for credit card detector
 Contribution entry: 2026-01-07T10:21:39.818638 - test: mock external LLM API calls in test suite
+Contribution entry: 2026-01-07T10:20:31.818638 - fix: correct host binding in CLI startup
