@@ -550,3 +550,4 @@ Contribution entry: 2026-01-10T14:49:41.818638 - test: add unit tests for credit
 Contribution entry: 2026-01-10T15:15:15.818638 - fix: correct host binding in CLI startup
 Contribution entry: 2026-01-10T16:53:57.818638 - refactor: abstract session storage manager
 Contribution entry: 2026-01-10T13:38:43.818638 - docs: clarify licensing in LICENSE file
+Contribution entry: 2026-01-10T14:58:07.818638 - docs: update installation steps in README
