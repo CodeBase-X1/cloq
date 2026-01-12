@@ -552,3 +552,4 @@ Contribution entry: 2026-01-10T16:53:57.818638 - refactor: abstract session stor
 Contribution entry: 2026-01-10T13:38:43.818638 - docs: clarify licensing in LICENSE file
 Contribution entry: 2026-01-10T14:58:07.818638 - docs: update installation steps in README
 Contribution entry: 2026-01-10T20:35:13.818638 - refactor: optimize entropy calculation speed
+Contribution entry: 2026-01-12T21:43:10.818638 - fix: correct overlapping entity merge logic
