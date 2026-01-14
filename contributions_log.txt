@@ -562,3 +562,4 @@ Contribution entry: 2026-01-13T14:07:44.818638 - style: improve terminal dashboa
 Contribution entry: 2026-01-14T16:53:28.818638 - refactor: abstract session storage manager
 Contribution entry: 2026-01-14T13:19:35.818638 - perf: accelerate regex matching engine
 Contribution entry: 2026-01-14T14:17:05.818638 - fix: correct host binding in CLI startup
+Contribution entry: 2026-01-14T21:09:39.818638 - feat: support custom AWS endpoints
