@@ -565,3 +565,4 @@ Contribution entry: 2026-01-14T14:17:05.818638 - fix: correct host binding in CL
 Contribution entry: 2026-01-14T21:09:39.818638 - feat: support custom AWS endpoints
 Contribution entry: 2026-01-15T14:11:48.818638 - fix: correct overlapping entity merge logic
 Contribution entry: 2026-01-15T11:39:03.818638 - feat: integrate prompt cache mechanism
+Contribution entry: 2026-01-16T19:31:42.818638 - fix: correct host binding in CLI startup
