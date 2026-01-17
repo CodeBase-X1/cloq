@@ -570,3 +570,4 @@ Contribution entry: 2026-01-16T15:36:35.818638 - style: improve terminal dashboa
 Contribution entry: 2026-01-16T18:39:46.818638 - fix: resolve memory leak in streaming pipeline
 Contribution entry: 2026-01-16T17:27:39.818638 - fix: resolve memory leak in streaming pipeline
 Contribution entry: 2026-01-16T08:21:01.818638 - docs: clarify licensing in LICENSE file
+Contribution entry: 2026-01-17T18:02:26.818638 - docs: update installation steps in README
