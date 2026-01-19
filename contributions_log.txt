@@ -578,3 +578,4 @@ Contribution entry: 2026-01-17T17:18:02.818638 - test: mock external LLM API cal
 Contribution entry: 2026-01-19T16:04:00.818638 - fix: correct overlapping entity merge logic
 Contribution entry: 2026-01-19T21:41:35.818638 - refactor: abstract session storage manager
 Contribution entry: 2026-01-19T11:06:37.818638 - fix: correct overlapping entity merge logic
+Contribution entry: 2026-01-19T18:12:06.818638 - fix: correct overlapping entity merge logic
