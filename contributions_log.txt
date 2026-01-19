@@ -575,3 +575,4 @@ Contribution entry: 2026-01-17T08:44:44.818638 - style: improve terminal dashboa
 Contribution entry: 2026-01-17T14:02:54.818638 - fix: handle null responses in upstream client
 Contribution entry: 2026-01-17T16:24:25.818638 - perf: accelerate regex matching engine
 Contribution entry: 2026-01-17T17:18:02.818638 - test: mock external LLM API calls in test suite
+Contribution entry: 2026-01-19T16:04:00.818638 - fix: correct overlapping entity merge logic
