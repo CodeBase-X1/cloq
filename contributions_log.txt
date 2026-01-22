@@ -583,3 +583,4 @@ Contribution entry: 2026-01-22T17:46:09.818638 - feat: support custom AWS endpoi
 Contribution entry: 2026-01-22T12:50:04.818638 - fix: resolve memory leak in streaming pipeline
 Contribution entry: 2026-01-22T12:15:31.818638 - test: add unit tests for credit card detector
 Contribution entry: 2026-01-22T09:46:38.818638 - fix: correct host binding in CLI startup
+Contribution entry: 2026-01-22T14:41:36.818638 - fix: correct overlapping entity merge logic
