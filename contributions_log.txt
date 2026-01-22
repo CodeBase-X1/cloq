@@ -580,3 +580,4 @@ Contribution entry: 2026-01-19T21:41:35.818638 - refactor: abstract session stor
 Contribution entry: 2026-01-19T11:06:37.818638 - fix: correct overlapping entity merge logic
 Contribution entry: 2026-01-19T18:12:06.818638 - fix: correct overlapping entity merge logic
 Contribution entry: 2026-01-22T17:46:09.818638 - feat: support custom AWS endpoints
+Contribution entry: 2026-01-22T12:50:04.818638 - fix: resolve memory leak in streaming pipeline
