@@ -586,3 +586,4 @@ Contribution entry: 2026-01-22T09:46:38.818638 - fix: correct host binding in CL
 Contribution entry: 2026-01-22T14:41:36.818638 - fix: correct overlapping entity merge logic
 Contribution entry: 2026-01-23T18:45:40.818638 - test: increase test coverage for proxy server
 Contribution entry: 2026-01-23T10:16:53.818638 - fix: resolve memory leak in streaming pipeline
+Contribution entry: 2026-01-26T15:44:02.818638 - fix: correct host binding in CLI startup
