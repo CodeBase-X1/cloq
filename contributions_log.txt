@@ -590,3 +590,4 @@ Contribution entry: 2026-01-26T15:44:02.818638 - fix: correct host binding in CL
 Contribution entry: 2026-01-26T09:06:19.818638 - refactor: optimize entropy calculation speed
 Contribution entry: 2026-01-27T15:55:36.818638 - refactor: abstract session storage manager
 Contribution entry: 2026-01-27T09:19:14.818638 - docs: clarify licensing in LICENSE file
+Contribution entry: 2026-01-27T21:20:59.818638 - fix: correct host binding in CLI startup
