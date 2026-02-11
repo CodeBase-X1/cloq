@@ -623,3 +623,4 @@ Contribution entry: 2026-02-10T16:04:47.818638 - fix: handle null responses in u
 Contribution entry: 2026-02-10T11:19:42.818638 - fix: correct overlapping entity merge logic
 Contribution entry: 2026-02-10T19:45:13.818638 - test: add unit tests for credit card detector
 Contribution entry: 2026-02-10T10:35:50.818638 - style: format codebase with black and ruff
+Contribution entry: 2026-02-11T17:01:31.818638 - fix: resolve memory leak in streaming pipeline
