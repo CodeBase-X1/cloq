@@ -626,3 +626,4 @@ Contribution entry: 2026-02-10T10:35:50.818638 - style: format codebase with bla
 Contribution entry: 2026-02-11T17:01:31.818638 - fix: resolve memory leak in streaming pipeline
 Contribution entry: 2026-02-11T19:25:21.818638 - fix: correct overlapping entity merge logic
 Contribution entry: 2026-02-13T08:39:35.818638 - feat: integrate prompt cache mechanism
+Contribution entry: 2026-02-13T17:21:06.818638 - fix: correct overlapping entity merge logic
