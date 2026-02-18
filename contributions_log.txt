@@ -632,3 +632,4 @@ Contribution entry: 2026-02-13T17:40:20.818638 - feat: implement network CIDR sc
 Contribution entry: 2026-02-13T11:25:47.818638 - test: increase test coverage for proxy server
 Contribution entry: 2026-02-18T11:43:43.818638 - feat: support custom AWS endpoints
 Contribution entry: 2026-02-18T13:22:06.818638 - chore: update poetry dependencies
+Contribution entry: 2026-02-18T12:12:32.818638 - fix: handle null responses in upstream client
