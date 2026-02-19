@@ -637,3 +637,4 @@ Contribution entry: 2026-02-18T18:04:22.818638 - feat: add custom regex filter s
 Contribution entry: 2026-02-18T16:54:54.818638 - perf: accelerate regex matching engine
 Contribution entry: 2026-02-19T20:53:32.818638 - test: mock external LLM API calls in test suite
 Contribution entry: 2026-02-19T08:27:34.818638 - fix: handle null responses in upstream client
+Contribution entry: 2026-02-19T20:10:47.818638 - feat: support custom AWS endpoints
