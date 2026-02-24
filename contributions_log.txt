@@ -650,3 +650,4 @@ Contribution entry: 2026-02-23T17:18:29.818638 - perf: accelerate regex matching
 Contribution entry: 2026-02-23T13:00:22.818638 - fix: correct host binding in CLI startup
 Contribution entry: 2026-02-23T20:46:55.818638 - fix: correct overlapping entity merge logic
 Contribution entry: 2026-02-23T20:43:21.818638 - fix: correct overlapping entity merge logic
+Contribution entry: 2026-02-24T17:36:21.818638 - fix: correct overlapping entity merge logic
