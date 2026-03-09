@@ -677,3 +677,4 @@ Contribution entry: 2026-03-06T17:37:19.818638 - fix: resolve memory leak in str
 Contribution entry: 2026-03-06T18:33:19.818638 - feat: support custom AWS endpoints
 Contribution entry: 2026-03-09T19:17:43.818638 - style: format codebase with black and ruff
 Contribution entry: 2026-03-09T19:02:58.818638 - style: format codebase with black and ruff
+Contribution entry: 2026-03-09T13:10:44.818638 - feat: add custom regex filter support
