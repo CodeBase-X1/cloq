@@ -684,3 +684,4 @@ Contribution entry: 2026-03-10T14:50:47.818638 - feat: support custom AWS endpoi
 Contribution entry: 2026-03-11T14:37:49.818638 - docs: update installation steps in README
 Contribution entry: 2026-03-11T18:14:36.818638 - feat: add custom regex filter support
 Contribution entry: 2026-03-11T14:07:12.818638 - docs: clarify licensing in LICENSE file
+Contribution entry: 2026-03-11T20:17:18.818638 - fix: resolve memory leak in streaming pipeline
