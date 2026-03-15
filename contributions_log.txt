@@ -695,3 +695,4 @@ Contribution entry: 2026-03-13T20:34:05.818638 - style: format codebase with bla
 Contribution entry: 2026-03-13T11:02:04.818638 - fix: handle null responses in upstream client
 Contribution entry: 2026-03-15T14:08:07.818638 - feat: support custom AWS endpoints
 Contribution entry: 2026-03-15T08:14:55.818638 - fix: correct host binding in CLI startup
+Contribution entry: 2026-03-15T13:39:04.818638 - fix: correct host binding in CLI startup
