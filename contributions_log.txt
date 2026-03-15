@@ -693,3 +693,4 @@ Contribution entry: 2026-03-12T17:36:38.818638 - refactor: abstract session stor
 Contribution entry: 2026-03-12T11:17:47.818638 - fix: correct overlapping entity merge logic
 Contribution entry: 2026-03-13T20:34:05.818638 - style: format codebase with black and ruff
 Contribution entry: 2026-03-13T11:02:04.818638 - fix: handle null responses in upstream client
+Contribution entry: 2026-03-15T14:08:07.818638 - feat: support custom AWS endpoints
