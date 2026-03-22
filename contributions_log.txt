@@ -707,3 +707,4 @@ Contribution entry: 2026-03-17T09:16:22.818638 - perf: accelerate regex matching
 Contribution entry: 2026-03-17T15:57:29.818638 - feat: integrate prompt cache mechanism
 Contribution entry: 2026-03-18T12:37:30.818638 - test: increase test coverage for proxy server
 Contribution entry: 2026-03-18T09:01:06.818638 - test: mock external LLM API calls in test suite
+Contribution entry: 2026-03-22T08:44:40.818638 - docs: update installation steps in README
