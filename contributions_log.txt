@@ -739,3 +739,4 @@ Contribution entry: 2026-04-02T13:14:24.818638 - fix: correct overlapping entity
 Contribution entry: 2026-04-02T13:24:10.818638 - docs: add architectural strategy blueprint
 Contribution entry: 2026-04-02T20:44:55.818638 - fix: handle null responses in upstream client
 Contribution entry: 2026-04-02T21:25:45.818638 - test: increase test coverage for proxy server
+Contribution entry: 2026-04-02T21:41:36.818638 - feat: add custom regex filter support
