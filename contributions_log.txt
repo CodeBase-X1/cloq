@@ -751,3 +751,4 @@ Contribution entry: 2026-04-04T11:56:41.818638 - fix: correct host binding in CL
 Contribution entry: 2026-04-04T16:09:26.818638 - refactor: optimize entropy calculation speed
 Contribution entry: 2026-04-08T12:37:46.818638 - fix: resolve memory leak in streaming pipeline
 Contribution entry: 2026-04-08T09:36:50.818638 - test: add unit tests for credit card detector
+Contribution entry: 2026-04-08T08:57:57.818638 - fix: handle null responses in upstream client
