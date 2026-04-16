@@ -767,3 +767,4 @@ Contribution entry: 2026-04-14T10:48:58.818638 - perf: accelerate regex matching
 Contribution entry: 2026-04-15T14:07:44.818638 - docs: update installation steps in README
 Contribution entry: 2026-04-15T18:56:54.818638 - docs: update installation steps in README
 Contribution entry: 2026-04-15T15:15:05.818638 - docs: add architectural strategy blueprint
+Contribution entry: 2026-04-16T16:58:16.818638 - docs: clarify licensing in LICENSE file
