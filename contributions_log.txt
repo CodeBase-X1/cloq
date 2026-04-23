@@ -792,3 +792,4 @@ Contribution entry: 2026-04-21T16:36:16.818638 - style: format codebase with bla
 Contribution entry: 2026-04-23T16:07:30.818638 - feat: implement network CIDR scanner
 Contribution entry: 2026-04-23T16:14:17.818638 - test: mock external LLM API calls in test suite
 Contribution entry: 2026-04-23T21:35:12.818638 - feat: add custom regex filter support
+Contribution entry: 2026-04-23T12:46:36.818638 - feat: support custom AWS endpoints
