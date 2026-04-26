@@ -803,3 +803,4 @@ Contribution entry: 2026-04-24T17:52:42.818638 - test: mock external LLM API cal
 Contribution entry: 2026-04-26T11:20:13.818638 - docs: update installation steps in README
 Contribution entry: 2026-04-26T19:10:03.818638 - style: improve terminal dashboard HUD layout
 Contribution entry: 2026-04-26T13:50:30.818638 - fix: correct host binding in CLI startup
+Contribution entry: 2026-04-26T13:29:05.818638 - fix: resolve memory leak in streaming pipeline
