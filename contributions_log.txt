@@ -807,3 +807,4 @@ Contribution entry: 2026-04-26T13:29:05.818638 - fix: resolve memory leak in str
 Contribution entry: 2026-04-26T19:53:21.818638 - fix: correct host binding in CLI startup
 Contribution entry: 2026-04-27T08:40:25.818638 - chore: update poetry dependencies
 Contribution entry: 2026-04-27T21:30:23.818638 - perf: accelerate regex matching engine
+Contribution entry: 2026-04-27T20:30:23.818638 - docs: update installation steps in README
