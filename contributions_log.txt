@@ -824,3 +824,4 @@ Contribution entry: 2026-04-29T17:34:30.818638 - docs: update installation steps
 Contribution entry: 2026-04-30T19:23:18.818638 - docs: add architectural strategy blueprint
 Contribution entry: 2026-04-30T08:07:02.818638 - test: mock external LLM API calls in test suite
 Contribution entry: 2026-04-30T08:36:41.818638 - fix: correct overlapping entity merge logic
+Contribution entry: 2026-04-30T11:56:55.818638 - perf: accelerate regex matching engine
