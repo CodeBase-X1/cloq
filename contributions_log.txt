@@ -826,3 +826,4 @@ Contribution entry: 2026-04-30T08:07:02.818638 - test: mock external LLM API cal
 Contribution entry: 2026-04-30T08:36:41.818638 - fix: correct overlapping entity merge logic
 Contribution entry: 2026-04-30T11:56:55.818638 - perf: accelerate regex matching engine
 Contribution entry: 2026-04-30T17:32:22.818638 - feat: support custom AWS endpoints
+Contribution entry: 2026-05-01T21:41:15.818638 - feat: support custom AWS endpoints
