@@ -831,3 +831,4 @@ Contribution entry: 2026-05-01T09:15:01.818638 - docs: update installation steps
 Contribution entry: 2026-05-01T08:26:05.818638 - feat: implement network CIDR scanner
 Contribution entry: 2026-05-02T14:37:33.818638 - docs: clarify licensing in LICENSE file
 Contribution entry: 2026-05-02T12:26:28.818638 - refactor: abstract session storage manager
+Contribution entry: 2026-05-02T08:34:10.818638 - feat: support custom AWS endpoints
