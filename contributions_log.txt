@@ -835,3 +835,4 @@ Contribution entry: 2026-05-02T08:34:10.818638 - feat: support custom AWS endpoi
 Contribution entry: 2026-05-02T08:37:21.818638 - docs: update installation steps in README
 Contribution entry: 2026-05-02T16:11:59.818638 - docs: update installation steps in README
 Contribution entry: 2026-05-02T17:40:11.818638 - docs: update installation steps in README
+Contribution entry: 2026-05-04T08:07:57.818638 - fix: correct host binding in CLI startup
