@@ -859,3 +859,4 @@ Contribution entry: 2026-05-11T15:29:29.818638 - feat: integrate prompt cache me
 Contribution entry: 2026-05-12T14:46:06.818638 - docs: clarify licensing in LICENSE file
 Contribution entry: 2026-05-12T10:15:41.818638 - feat: support custom AWS endpoints
 Contribution entry: 2026-05-12T12:41:56.818638 - fix: resolve memory leak in streaming pipeline
+Contribution entry: 2026-05-12T15:37:54.818638 - fix: correct overlapping entity merge logic
