@@ -867,3 +867,4 @@ Contribution entry: 2026-05-14T08:09:45.818638 - style: improve terminal dashboa
 Contribution entry: 2026-05-14T12:48:58.818638 - refactor: abstract session storage manager
 Contribution entry: 2026-05-15T17:27:49.818638 - chore: update poetry dependencies
 Contribution entry: 2026-05-15T08:20:17.818638 - style: improve terminal dashboard HUD layout
+Contribution entry: 2026-05-15T20:40:45.818638 - fix: correct overlapping entity merge logic
