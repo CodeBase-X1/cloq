@@ -878,3 +878,4 @@ Contribution entry: 2026-05-16T09:49:10.818638 - refactor: abstract session stor
 Contribution entry: 2026-05-16T14:23:50.818638 - test: mock external LLM API calls in test suite
 Contribution entry: 2026-05-16T21:04:32.818638 - feat: add custom regex filter support
 Contribution entry: 2026-05-18T21:48:35.818638 - test: add unit tests for credit card detector
+Contribution entry: 2026-05-18T10:37:21.818638 - docs: add architectural strategy blueprint
