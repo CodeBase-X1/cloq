@@ -933,3 +933,4 @@ Contribution entry: 2026-05-20T19:00:41.818638 - style: format codebase with bla
 Contribution entry: 2026-05-20T12:29:22.818638 - style: format codebase with black and ruff
 Contribution entry: 2026-05-20T16:59:27.818638 - refactor: optimize entropy calculation speed
 Contribution entry: 2026-05-20T15:08:03.818638 - refactor: optimize entropy calculation speed
+Contribution entry: 2026-05-20T18:34:28.818638 - docs: clarify licensing in LICENSE file
