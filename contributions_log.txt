@@ -958,3 +958,4 @@ Contribution entry: 2026-05-20T18:20:37.818638 - fix: handle null responses in u
 Contribution entry: 2026-05-20T08:51:03.818638 - style: improve terminal dashboard HUD layout
 Contribution entry: 2026-05-20T09:38:36.818638 - fix: handle null responses in upstream client
 Contribution entry: 2026-05-20T16:16:38.818638 - docs: update installation steps in README
+Contribution entry: 2026-05-20T11:58:36.818638 - docs: clarify licensing in LICENSE file
