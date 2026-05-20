@@ -966,3 +966,4 @@ Contribution entry: 2026-05-20T13:23:34.818638 - test: add unit tests for credit
 Contribution entry: 2026-05-20T15:23:31.818638 - test: add unit tests for credit card detector
 Contribution entry: 2026-05-20T10:02:32.818638 - refactor: abstract session storage manager
 Contribution entry: 2026-05-20T21:52:58.818638 - feat: add custom regex filter support
+Contribution entry: 2026-05-20T17:40:26.818638 - fix: handle null responses in upstream client
