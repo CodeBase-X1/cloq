@@ -935,3 +935,4 @@ Contribution entry: 2026-05-20T16:59:27.818638 - refactor: optimize entropy calc
 Contribution entry: 2026-05-20T15:08:03.818638 - refactor: optimize entropy calculation speed
 Contribution entry: 2026-05-20T18:34:28.818638 - docs: clarify licensing in LICENSE file
 Contribution entry: 2026-05-20T19:39:59.818638 - feat: add custom regex filter support
+Contribution entry: 2026-05-20T16:29:11.818638 - feat: implement network CIDR scanner
