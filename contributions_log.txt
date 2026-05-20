@@ -914,3 +914,4 @@ Contribution entry: 2026-05-20T12:46:06.818638 - style: format codebase with bla
 Contribution entry: 2026-05-20T18:46:37.818638 - feat: support custom AWS endpoints
 Contribution entry: 2026-05-20T13:23:12.818638 - docs: update installation steps in README
 Contribution entry: 2026-05-20T16:19:28.818638 - fix: handle null responses in upstream client
+Contribution entry: 2026-05-20T12:48:25.818638 - docs: update installation steps in README
