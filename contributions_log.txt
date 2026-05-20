@@ -1036,3 +1036,4 @@ Contribution entry: 2026-05-20T08:12:42.818638 - feat: support custom AWS endpoi
 Contribution entry: 2026-05-20T15:22:16.818638 - chore: update poetry dependencies
 Contribution entry: 2026-05-20T13:19:42.818638 - style: format codebase with black and ruff
 Contribution entry: 2026-05-20T13:53:13.818638 - docs: add architectural strategy blueprint
+Contribution entry: 2026-05-20T17:26:06.818638 - docs: update installation steps in README
