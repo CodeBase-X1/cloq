@@ -978,3 +978,4 @@ Contribution entry: 2026-05-20T12:54:21.818638 - test: mock external LLM API cal
 Contribution entry: 2026-05-20T15:03:22.818638 - chore: update poetry dependencies
 Contribution entry: 2026-05-20T19:54:15.818638 - refactor: abstract session storage manager
 Contribution entry: 2026-05-20T20:09:49.818638 - test: increase test coverage for proxy server
+Contribution entry: 2026-05-20T09:46:42.818638 - docs: update installation steps in README
