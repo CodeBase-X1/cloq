@@ -939,3 +939,4 @@ Contribution entry: 2026-05-20T16:29:11.818638 - feat: implement network CIDR sc
 Contribution entry: 2026-05-20T15:29:49.818638 - test: mock external LLM API calls in test suite
 Contribution entry: 2026-05-20T20:19:07.818638 - feat: implement network CIDR scanner
 Contribution entry: 2026-05-20T18:28:53.818638 - feat: add custom regex filter support
+Contribution entry: 2026-05-20T11:21:47.818638 - docs: clarify licensing in LICENSE file
