@@ -912,3 +912,4 @@ Contribution entry: 2026-05-20T18:06:42.818638 - docs: clarify licensing in LICE
 Contribution entry: 2026-05-20T16:36:02.818638 - fix: resolve memory leak in streaming pipeline
 Contribution entry: 2026-05-20T12:46:06.818638 - style: format codebase with black and ruff
 Contribution entry: 2026-05-20T18:46:37.818638 - feat: support custom AWS endpoints
+Contribution entry: 2026-05-20T13:23:12.818638 - docs: update installation steps in README
