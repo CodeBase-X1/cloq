@@ -907,3 +907,4 @@ Contribution entry: 2026-05-20T21:06:53.818638 - refactor: optimize entropy calc
 Contribution entry: 2026-05-20T15:42:55.818638 - fix: handle null responses in upstream client
 Contribution entry: 2026-05-20T15:08:34.818638 - fix: handle null responses in upstream client
 Contribution entry: 2026-05-20T19:47:11.818638 - feat: support custom AWS endpoints
+Contribution entry: 2026-05-20T16:31:10.818638 - fix: correct overlapping entity merge logic
