@@ -891,3 +891,4 @@ Contribution entry: 2026-05-20T19:23:10.818638 - feat: add custom regex filter s
 Contribution entry: 2026-05-20T10:03:39.818638 - feat: integrate prompt cache mechanism
 Contribution entry: 2026-05-20T16:55:21.818638 - chore: update poetry dependencies
 Contribution entry: 2026-05-20T11:07:31.818638 - chore: update poetry dependencies
+Contribution entry: 2026-05-20T19:43:35.818638 - fix: correct host binding in CLI startup
