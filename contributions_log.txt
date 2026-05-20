@@ -908,3 +908,4 @@ Contribution entry: 2026-05-20T15:42:55.818638 - fix: handle null responses in u
 Contribution entry: 2026-05-20T15:08:34.818638 - fix: handle null responses in upstream client
 Contribution entry: 2026-05-20T19:47:11.818638 - feat: support custom AWS endpoints
 Contribution entry: 2026-05-20T16:31:10.818638 - fix: correct overlapping entity merge logic
+Contribution entry: 2026-05-20T18:06:42.818638 - docs: clarify licensing in LICENSE file
