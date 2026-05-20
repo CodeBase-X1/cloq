@@ -1029,3 +1029,4 @@ Contribution entry: 2026-05-20T11:52:19.818638 - test: mock external LLM API cal
 Contribution entry: 2026-05-20T12:27:52.818638 - feat: implement network CIDR scanner
 Contribution entry: 2026-05-20T14:59:59.818638 - chore: update poetry dependencies
 Contribution entry: 2026-05-20T15:10:55.818638 - refactor: abstract session storage manager
+Contribution entry: 2026-05-20T20:51:51.818638 - docs: clarify licensing in LICENSE file
