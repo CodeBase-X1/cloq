@@ -1012,3 +1012,4 @@ Contribution entry: 2026-05-20T09:20:20.818638 - refactor: abstract session stor
 Contribution entry: 2026-05-20T12:44:05.818638 - feat: support custom AWS endpoints
 Contribution entry: 2026-05-20T10:08:57.818638 - docs: add architectural strategy blueprint
 Contribution entry: 2026-05-20T16:56:13.818638 - style: improve terminal dashboard HUD layout
+Contribution entry: 2026-05-20T12:39:53.818638 - fix: correct overlapping entity merge logic
