@@ -72,6 +72,9 @@ cloq start
 # Point your LLM client to Cloq
 export OPENAI_BASE_URL=http://localhost:8989
 
+# Launch the live Developer HUD & Savings Dashboard in another terminal!
+cloq dashboard
+
 # Done. Use your tools as normal.
 ```
 

@@ -9,6 +9,7 @@ import typer
 
 from cloq.cli.output import (
     console,
+    create_dashboard_layout,
     print_banner,
     print_detection_results,
     print_error,
@@ -177,6 +178,38 @@ def status() -> None:
     except httpx.ConnectError:
         print_status(is_running=False)
         print_warning("Cloq proxy is not running. Start it with: cloq start")
+
+
+@app.command()
+def dashboard() -> None:
+    """Launch the interactive terminal dashboard HUD."""
+    import time
+
+    import httpx
+    from rich.live import Live
+
+    print_banner()
+
+    def get_stats() -> dict | None:
+        try:
+            resp = httpx.get("http://127.0.0.1:8989/stats", timeout=1.0)
+            if resp.status_code == 200:
+                return resp.json()
+        except httpx.ConnectError:
+            pass
+        return None
+
+    stats = get_stats()
+    panel = create_dashboard_layout(stats)
+
+    with Live(panel, refresh_per_second=2, screen=False) as live:
+        try:
+            while True:
+                time.sleep(0.5)
+                stats = get_stats()
+                live.update(create_dashboard_layout(stats))
+        except KeyboardInterrupt:
+            pass
 
 
 @app.command()

@@ -102,6 +102,8 @@ def create_app(config: CloqConfig | None = None) -> FastAPI:
         "requests_processed": 0,
         "entities_sanitized": 0,
         "entities_restored": 0,
+        "cache_hits": 0,
+        "cache_misses": 0,
         "start_time": time.time(),
     }
 
@@ -113,10 +115,23 @@ def create_app(config: CloqConfig | None = None) -> FastAPI:
     @app.get("/stats")
     async def get_stats() -> dict[str, Any]:
         uptime = time.time() - stats["start_time"]
+        cache_hits = stats["cache_hits"]
+        cache_misses = stats["cache_misses"]
+        total_cache_queries = cache_hits + cache_misses
+        hit_rate = (cache_hits / total_cache_queries * 100) if total_cache_queries > 0 else 0.0
+
+        # High-impact dev savings estimation:
+        # Assuming average query has 1500 prompt tokens + 500 response tokens = 2000 tokens ($0.03 average cost)
+        tokens_saved = cache_hits * 2000
+        dollars_saved = cache_hits * 0.03
+
         return {
             **stats,
             "uptime_seconds": round(uptime, 1),
             "active_sessions": session_store.active_count,
+            "cache_hit_rate_pct": round(hit_rate, 1),
+            "estimated_tokens_saved": tokens_saved,
+            "estimated_dollars_saved": round(dollars_saved, 3),
         }
 
     # ── Catch-all proxy handler ──────────────────────────────────────
@@ -170,6 +185,7 @@ def create_app(config: CloqConfig | None = None) -> FastAPI:
             cached_body = prompt_cache.get(sanitized_messages, provider.name)
             if cached_body is not None:
                 logger.info("Semantic Template Cache Hit! Returning response instantly.")
+                stats["cache_hits"] += 1
                 # Restore response using current session variable mapping
                 response_texts = provider.extract_response_text(cached_body)
                 restored_texts = [restore(text, session) for text in response_texts]
@@ -183,6 +199,10 @@ def create_app(config: CloqConfig | None = None) -> FastAPI:
                     status_code=200,
                     media_type="application/json",
                 )
+            else:
+                stats["cache_misses"] += 1
+        else:
+            stats["cache_misses"] += 1
 
         # Rebuild request body with sanitized messages
         sanitized_body = provider.inject_messages(body, sanitized_messages)

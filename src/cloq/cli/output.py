@@ -123,3 +123,80 @@ def print_error(message: str) -> None:
 def print_warning(message: str) -> None:
     """Print a warning message."""
     console.print(f"  [yellow]⚠[/yellow] {message}")
+
+
+def create_dashboard_layout(stats: dict | None) -> Panel:
+    """Create a gorgeous terminal dashboard panel for Cloq status and savings."""
+    if not stats:
+        # Offline state
+        offline_table = Table(show_header=False, box=None, padding=(1, 2))
+        offline_table.add_column(style="bold red")
+        offline_table.add_column()
+        offline_table.add_row("Status", "● OFFLINE")
+        offline_table.add_row(
+            "Action",
+            "[yellow]Start the proxy in another terminal with:[/yellow] [bold cyan]cloq start[/bold cyan]",
+        )
+        return Panel(
+            offline_table,
+            title="[bold red]Cloq Developer HUD[/bold red]",
+            border_style="red",
+            expand=False,
+        )
+
+    # Online state
+    grid = Table.grid(expand=True, padding=(0, 2))
+    grid.add_column(ratio=1)
+    grid.add_column(ratio=1)
+
+    # Column 1: Proxy Metrics
+    metrics_table = Table(show_header=False, box=None, padding=(0, 1))
+    metrics_table.add_column(style="bold cyan")
+    metrics_table.add_column(justify="right")
+
+    uptime = stats.get("uptime_seconds", 0)
+    if uptime > 3600:
+        uptime_str = f"{uptime / 3600:.1f}h"
+    elif uptime > 60:
+        uptime_str = f"{uptime / 60:.1f}m"
+    else:
+        uptime_str = f"{uptime:.0f}s"
+
+    metrics_table.add_row("Uptime", uptime_str)
+    metrics_table.add_row("Active Sessions", f"{stats.get('active_sessions', 0)}")
+    metrics_table.add_row("Requests Intercepted", f"{stats.get('requests_processed', 0)}")
+    metrics_table.add_row("Entities Masked", f"[red]{stats.get('entities_sanitized', 0)}[/red]")
+    metrics_table.add_row(
+        "Entities Restored", f"[green]{stats.get('entities_restored', 0)}[/green]"
+    )
+
+    # Column 2: Performance & Cost Savings
+    savings_table = Table(show_header=False, box=None, padding=(0, 1))
+    savings_table.add_column(style="bold yellow")
+    savings_table.add_column(justify="right")
+    savings_table.add_row("Cache Hits", f"[green]{stats.get('cache_hits', 0)}[/green]")
+    savings_table.add_row("Cache Misses", f"[dim]{stats.get('cache_misses', 0)}[/dim]")
+    savings_table.add_row(
+        "Cache Hit Rate", f"[bold green]{stats.get('cache_hit_rate_pct', 0.0):.1f}%[/bold green]"
+    )
+    savings_table.add_row(
+        "Tokens Saved", f"[bold orange3]{stats.get('estimated_tokens_saved', 0):,}[/bold orange3]"
+    )
+    savings_table.add_row(
+        "Estimated Savings",
+        f"[bold green]${stats.get('estimated_dollars_saved', 0.0):.3f}[/bold green]",
+    )
+
+    grid.add_row(
+        Panel(metrics_table, title="[bold]Proxy Engine[/bold]", border_style="cyan"),
+        Panel(savings_table, title="[bold]Cost Optimizer & Cache[/bold]", border_style="yellow"),
+    )
+
+    # Master Panel
+    return Panel(
+        grid,
+        title="[bold green]● Cloq Developer HUD & Savings Dashboard[/bold green]",
+        subtitle="[dim]Point client to http://127.0.0.1:8989 | Press Ctrl+C to exit[/dim]",
+        border_style="green",
+        expand=False,
+    )
