@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/logo.gif" width="180" alt="Cloq" />
+<img src="assets/logo.gif" width="300" alt="Cloq" />
 
 # Cloq
 
