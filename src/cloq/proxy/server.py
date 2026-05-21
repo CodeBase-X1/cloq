@@ -16,6 +16,7 @@ from cloq.detection.network import NetworkDetector
 from cloq.detection.pii import PIIDetector
 from cloq.detection.pipeline import DetectionPipeline
 from cloq.detection.secrets import SecretsDetector
+from cloq.proxy.cache import LocalPromptCache
 from cloq.proxy.providers import detect_provider
 from cloq.proxy.streaming import restore_sse_stream
 from cloq.sanitizer.engine import restore, sanitize_messages
@@ -94,6 +95,7 @@ def create_app(config: CloqConfig | None = None) -> FastAPI:
         default_ttl=config.sanitizer.session_ttl_seconds,
         tag_format=config.sanitizer.tag_format,
     )
+    prompt_cache = LocalPromptCache()
 
     # Stats tracking
     stats: dict[str, Any] = {
@@ -163,6 +165,25 @@ def create_app(config: CloqConfig | None = None) -> FastAPI:
         stats["requests_processed"] += 1
         stats["entities_sanitized"] += session.total_substitutions
 
+        # Check local de-identified prompt cache (non-streaming only)
+        if not is_streaming:
+            cached_body = prompt_cache.get(sanitized_messages, provider.name)
+            if cached_body is not None:
+                logger.info("Semantic Template Cache Hit! Returning response instantly.")
+                # Restore response using current session variable mapping
+                response_texts = provider.extract_response_text(cached_body)
+                restored_texts = [restore(text, session) for text in response_texts]
+                restored_body = provider.inject_response_text(cached_body, restored_texts)
+
+                stats["entities_restored"] += session.total_substitutions
+                session_store.remove(session.session_id)
+
+                return Response(
+                    content=json.dumps(restored_body),
+                    status_code=200,
+                    media_type="application/json",
+                )
+
         # Rebuild request body with sanitized messages
         sanitized_body = provider.inject_messages(body, sanitized_messages)
 
@@ -209,6 +230,10 @@ def create_app(config: CloqConfig | None = None) -> FastAPI:
                         status_code=upstream_response.status_code,
                         headers=dict(upstream_response.headers),
                     )
+
+                # Store in local de-identified cache (only if successful response)
+                if upstream_response.status_code == 200:
+                    prompt_cache.set(sanitized_messages, provider.name, response_body)
 
                 # Restore tags in response
                 response_texts = provider.extract_response_text(response_body)
