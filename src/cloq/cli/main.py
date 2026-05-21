@@ -22,7 +22,8 @@ app = typer.Typer(
     name="cloq",
     help="🔒 Cloq — Cloak your secrets before they reach the cloud.",
     add_completion=True,
-    no_args_is_help=True,
+    no_args_is_help=False,
+    invoke_without_command=True,
     rich_markup_mode="rich",
 )
 
@@ -33,6 +34,17 @@ config_app = typer.Typer(
 )
 app.add_typer(config_app)
 
+
+@app.callback()
+def main_callback(ctx: typer.Context) -> None:
+    """🔒 Cloq — Cloak your secrets before they reach the cloud."""
+    if ctx.invoked_subcommand is None:
+        # No subcommand provided — show the mascot banner then help
+        print_banner()
+        console.print()
+        # Print help after the banner
+        console.print(ctx.get_help())
+        raise typer.Exit()
 
 @app.command()
 def start(
