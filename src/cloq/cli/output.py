@@ -11,69 +11,72 @@ from rich.text import Text
 
 console = Console()
 
-# ── Vibrant pixel-art welcome screen ─────────────────────────────────
-# Uses Unicode block characters with Rich hex-color markup for a
-# stunning multi-color gradient pixel-art splash, inspired by
-# Claude Code, Gemini CLI, and GitHub Copilot CLI branding.
+# ── Cloq mascot pixel-art ────────────────────────────────────────────
+# Pixel-art rendition of the Cloq mascot: a hooded phantom holding a
+# golden key. Uses the brand palette — indigo cloak, lavender body,
+# and gold key — rendered with Rich hex-color markup.
 
 VERSION_STR = "v0.1.0"
 
+# Brand palette constants
+_C = "#3d3d6b"   # cloak (dark indigo)
+_B = "#b8c4e8"   # body  (soft lavender)
+_E = "#2d2d50"   # eyes  (dark navy)
+_G = "#f0a030"   # gold key
+_K = "#d48820"   # key shaft
+_L = "#e8d070"   # key lock circle highlight
 
-def _build_colorful_banner() -> str:
-    """Build the colorful pixel-art banner string with Rich markup."""
-    # Shield with multi-color gradient (top→bottom: cyan → blue → purple → magenta)
-    shield = [
-        "[bold #00e5ff]              ░░░░░▓▓▓▓▓▓▓▓▓▓▓░░░░░[/]",
-        "[bold #00d4ff]            ░▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░[/]",
-        "[bold #00c3ff]           ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓[/]",
-        "[bold #00b0ff]          ▓▓▓▓▓[/][bold #ffffff]░░░░░░░░░░░░░░░[/][bold #00b0ff]▓▓▓▓▓[/]",
-        "[bold #2196f3]          ▓▓▓▓[/][bold #ffffff]░░░[/][bold #ffab00]██████████████[/][bold #ffffff]░░░[/][bold #2196f3]▓▓▓▓[/]",
-        "[bold #536dfe]          ▓▓▓▓[/][bold #ffffff]░░░[/][bold #ffd740]██[/][bold #ff6d00]██  ██████  ██[/][bold #ffd740]██[/][bold #ffffff]░░░[/][bold #536dfe]▓▓▓▓[/]",
-        "[bold #7c4dff]          ▓▓▓▓[/][bold #ffffff]░░░[/][bold #ffd740]██[/][bold #ff6d00]██  ██████  ██[/][bold #ffd740]██[/][bold #ffffff]░░░[/][bold #7c4dff]▓▓▓▓[/]",
-        "[bold #aa00ff]          ▓▓▓▓[/][bold #ffffff]░░░[/][bold #ffab00]██████████████[/][bold #ffffff]░░░[/][bold #aa00ff]▓▓▓▓[/]",
-        "[bold #d500f9]           ▓▓▓▓[/][bold #ffffff]░░░░░░░░░░░░░░░[/][bold #d500f9]▓▓▓▓[/]",
-        "[bold #e040fb]            ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓[/]",
-        "[bold #ea80fc]              ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓[/]",
-        "[bold #f48fb1]                ▓▓▓▓▓▓▓▓▓▓▓▓▓[/]",
-        "[bold #f8bbd0]                  ▓▓▓▓▓▓▓▓▓[/]",
-        "[bold #fce4ec]                    ▓▓▓▓▓[/]",
-        "[bold #ffffff]                      ▓[/]",
+
+def _build_mascot_banner() -> str:
+    """Build the Cloq mascot pixel-art banner with Rich markup."""
+    # Hooded phantom mascot holding a golden key
+    mascot = [
+        f"",
+        f"             [bold {_C}]    ▄▄████▄▄[/]",
+        f"             [bold {_C}]  ▄██████████▄[/]",
+        f"             [bold {_C}] ███[/][bold {_B}]▓▓▓▓▓▓▓▓[/][bold {_C}]███[/]",
+        f"             [bold {_C}]██[/][bold {_B}]▓▓▓▓▓▓▓▓▓▓▓▓[/][bold {_C}]██[/]",
+        f"             [bold {_C}]█[/][bold {_B}]▓▓▓[/][bold {_E}]██[/][bold {_B}]▓▓▓▓[/][bold {_E}]██[/][bold {_B}]▓▓▓[/][bold {_C}]█[/]",
+        f"             [bold {_C}]█[/][bold {_B}]▓▓▓▓▓▓[/][bold {_E}]▀▀[/][bold {_B}]▓▓▓▓▓▓[/][bold {_C}]█[/]       [bold {_L}]▄▄▄[/]",
+        f"             [bold {_C}]██[/][bold {_B}]▓▓▓▓▓▓▓▓▓▓▓▓[/][bold {_C}]██[/]      [bold {_G}]█[/][bold {_K}]█[/][bold {_G}]█[/]",
+        f"             [bold {_C}] ██[/][bold {_B}]▓▓▓▓▓▓▓▓▓▓[/][bold {_C}]██[/]       [bold {_K}]█████[/]",
+        f"             [bold {_C}]  ██[/][bold {_B}]▓▓▓▓▓▓▓▓[/][bold {_C}]██[/]        [bold {_K}]█[/]",
+        f"             [bold {_C}]   ███[/][bold {_B}]▓▓▓▓[/][bold {_C}]███[/]         [bold {_K}]█[/]",
+        f"             [bold {_C}]    ██████████[/]",
+        f"             [bold {_C}]     ████████[/]",
+        f"             [bold {_C}]      ▀▀▀▀▀▀[/]",
     ]
 
-    # CLOQ text with rainbow gradient per line
+    # CLOQ text in consistent brand indigo
     logo_text = [
         "",
-        "[bold #00e5ff]         ██████╗[/][bold #00bfa5]██╗[/][bold #64dd17]      ██████╗ [/][bold #ffd600] ██████╗[/]",
-        "[bold #00e5ff]        ██╔════╝[/][bold #00bfa5]██║[/][bold #64dd17]     ██╔═══██╗[/][bold #ffd600]██╔═══██╗[/]",
-        "[bold #00b8d4]        ██║     [/][bold #00bfa5]██║[/][bold #64dd17]     ██║   ██║[/][bold #ffd600]██║   ██║[/]",
-        "[bold #0091ea]        ██║     [/][bold #00bfa5]██║[/][bold #64dd17]     ██║   ██║[/][bold #ffab00]██║▄▄ ██║[/]",
-        "[bold #304ffe]        ╚██████╗[/][bold #00bfa5]███████╗[/][bold #64dd17]╚██████╔╝[/][bold #ff6d00]╚██████╔╝[/]",
-        "[bold #6200ea]         ╚═════╝[/][bold #00bfa5]╚══════╝[/][bold #64dd17] ╚═════╝ [/][bold #ff6d00] ╚══▀▀═╝[/]",
+        f"        [bold {_B}] ██████╗██╗      ██████╗  ██████╗ [/]",
+        f"        [bold {_B}]██╔════╝██║     ██╔═══██╗██╔═══██╗[/]",
+        f"        [bold {_B}]██║     ██║     ██║   ██║██║   ██║[/]",
+        f"        [bold {_B}]██║     ██║     ██║   ██║██║▄▄ ██║[/]",
+        f"        [bold {_B}]╚██████╗███████╗╚██████╔╝╚██████╔╝[/]",
+        f"        [bold {_B}] ╚═════╝╚══════╝ ╚═════╝  ╚══▀▀═╝[/]",
     ]
 
-    # Tagline box with gradient border
+    # Tagline in brand palette
     tagline = [
         "",
-        "[#4dd0e1]      ┌─────────────────────────────────────────┐[/]",
-        "[#4dd0e1]      │[/]  [bold #ff8a65]🔒[/] [bold white]Your secrets stay local.[/]               [#4dd0e1]│[/]",
-        "[#4dd0e1]      │[/]  [bold #66bb6a]🧠[/] [bold white]Your LLM gets clean context.[/]           [#4dd0e1]│[/]",
-        "[#4dd0e1]      │[/]  [bold #42a5f5]⚡[/] [bold white]Zero config. Zero latency. Zero cost.[/]  [#4dd0e1]│[/]",
-        "[#4dd0e1]      └─────────────────────────────────────────┘[/]",
+        f"      [dim {_B}]Your secrets stay local. Your LLM gets the context.[/]",
     ]
 
-    return "\n".join(shield + logo_text + tagline)
+    return "\n".join(mascot + logo_text + tagline)
 
 
-def print_banner(show_shield: bool = True) -> None:
-    """Print the Cloq colorful pixel-art welcome banner.
+def print_banner(show_mascot: bool = True) -> None:
+    """Print the Cloq mascot pixel-art welcome banner.
 
     Args:
-        show_shield: If True (default), render the full pixel-art shield.
-                     If False, show only the CLOQ text logo.
+        show_mascot: If True (default), render the full mascot pixel art.
     """
     console.print()
-    banner = _build_colorful_banner()
-    console.print(banner)
+    if show_mascot:
+        banner = _build_mascot_banner()
+        console.print(banner)
     console.print()
     console.print(
         f"  [dim]Version {VERSION_STR}  •  "

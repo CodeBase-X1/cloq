@@ -80,6 +80,7 @@ all = ["cloq[pii,dev,docs]"]
 
 [project.scripts]
 cloq = "cloq.cli.main:app"
+cloq-cli = "cloq.cli.main:app"
 
 [project.urls]
 Homepage = "https://github.com/cloq-dev/cloq"
