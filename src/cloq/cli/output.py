@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import platform
+
 from rich.console import Console
 from rich.panel import Panel
 from rich.table import Table
@@ -9,65 +11,74 @@ from rich.text import Text
 
 console = Console()
 
-# ── Pixel-art shield + lock logo ─────────────────────────────────────
-# Uses Unicode half-block characters (▀▄█░▓) for a retro pixel-art feel
-# Rendered with Rich markup for vibrant ANSI terminal colors.
-# Inspired by GitHub Copilot CLI's startup branding.
+# ── Vibrant pixel-art welcome screen ─────────────────────────────────
+# Uses Unicode block characters with Rich hex-color markup for a
+# stunning multi-color gradient pixel-art splash, inspired by
+# Claude Code, Gemini CLI, and GitHub Copilot CLI branding.
 
-PIXEL_LOGO = """\
-[bold cyan]
-             ██████╗██╗      ██████╗  ██████╗
-            ██╔════╝██║     ██╔═══██╗██╔═══██╗
-            ██║     ██║     ██║   ██║██║   ██║
-            ██║     ██║     ██║   ██║██║▄▄ ██║
-            ╚██████╗███████╗╚██████╔╝╚██████╔╝
-             ╚═════╝╚══════╝ ╚═════╝  ╚══▀▀═╝[/bold cyan]
-
-[dim cyan]        ┌──────────────────────────────────┐[/dim cyan]
-[dim cyan]        │[/dim cyan]  [bold white]🔒 Your secrets stay local.[/bold white]         [dim cyan]│[/dim cyan]
-[dim cyan]        │[/dim cyan]  [bold white]🧠 Your LLM gets clean context.[/bold white]   [dim cyan]│[/dim cyan]
-[dim cyan]        └──────────────────────────────────┘[/dim cyan]
-"""
-
-SHIELD_ART = """\
-[bold bright_cyan]            ░░░░░▓▓▓▓▓▓▓▓▓▓▓░░░░░[/bold bright_cyan]
-[bold bright_cyan]          ░▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░[/bold bright_cyan]
-[bold bright_cyan]         ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓[/bold bright_cyan]
-[bold bright_cyan]        ▓▓▓▓▓[/bold bright_cyan][bold white]░░░░░░░░░░░░░░░[/bold white][bold bright_cyan]▓▓▓▓▓[/bold bright_cyan]
-[bold bright_cyan]        ▓▓▓▓[/bold bright_cyan][bold white]░░░[/bold white][bold yellow]████████████[/bold yellow][bold white]░░░[/bold white][bold bright_cyan]▓▓▓▓[/bold bright_cyan]
-[bold bright_cyan]        ▓▓▓▓[/bold bright_cyan][bold white]░░░[/bold white][bold yellow]██[/bold yellow][bold black on yellow]  ████  [/bold black on yellow][bold yellow]██[/bold yellow][bold white]░░░[/bold white][bold bright_cyan]▓▓▓▓[/bold bright_cyan]
-[bold bright_cyan]        ▓▓▓▓[/bold bright_cyan][bold white]░░░[/bold white][bold yellow]██[/bold yellow][bold black on yellow]  ████  [/bold black on yellow][bold yellow]██[/bold yellow][bold white]░░░[/bold white][bold bright_cyan]▓▓▓▓[/bold bright_cyan]
-[bold bright_cyan]        ▓▓▓▓[/bold bright_cyan][bold white]░░░[/bold white][bold yellow]████████████[/bold yellow][bold white]░░░[/bold white][bold bright_cyan]▓▓▓▓[/bold bright_cyan]
-[bold bright_cyan]         ▓▓▓▓[/bold bright_cyan][bold white]░░░░░░░░░░░░░░░[/bold white][bold bright_cyan]▓▓▓▓[/bold bright_cyan]
-[bold bright_cyan]          ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓[/bold bright_cyan]
-[bold bright_cyan]            ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓[/bold bright_cyan]
-[bold bright_cyan]              ▓▓▓▓▓▓▓▓▓▓▓▓▓[/bold bright_cyan]
-[bold bright_cyan]                ▓▓▓▓▓▓▓▓▓[/bold bright_cyan]
-[bold bright_cyan]                  ▓▓▓▓▓[/bold bright_cyan]
-[bold bright_cyan]                    ▓[/bold bright_cyan]
-"""
-
-TAGLINE = "🔒 Cloak your secrets before they reach the cloud"
 VERSION_STR = "v0.1.0"
 
 
-def print_banner(show_shield: bool = False) -> None:
-    """Print the Cloq pixel-art banner with styling.
+def _build_colorful_banner() -> str:
+    """Build the colorful pixel-art banner string with Rich markup."""
+    # Shield with multi-color gradient (top→bottom: cyan → blue → purple → magenta)
+    shield = [
+        "[bold #00e5ff]              ░░░░░▓▓▓▓▓▓▓▓▓▓▓░░░░░[/]",
+        "[bold #00d4ff]            ░▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░[/]",
+        "[bold #00c3ff]           ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓[/]",
+        "[bold #00b0ff]          ▓▓▓▓▓[/][bold #ffffff]░░░░░░░░░░░░░░░[/][bold #00b0ff]▓▓▓▓▓[/]",
+        "[bold #2196f3]          ▓▓▓▓[/][bold #ffffff]░░░[/][bold #ffab00]██████████████[/][bold #ffffff]░░░[/][bold #2196f3]▓▓▓▓[/]",
+        "[bold #536dfe]          ▓▓▓▓[/][bold #ffffff]░░░[/][bold #ffd740]██[/][bold #ff6d00]██  ██████  ██[/][bold #ffd740]██[/][bold #ffffff]░░░[/][bold #536dfe]▓▓▓▓[/]",
+        "[bold #7c4dff]          ▓▓▓▓[/][bold #ffffff]░░░[/][bold #ffd740]██[/][bold #ff6d00]██  ██████  ██[/][bold #ffd740]██[/][bold #ffffff]░░░[/][bold #7c4dff]▓▓▓▓[/]",
+        "[bold #aa00ff]          ▓▓▓▓[/][bold #ffffff]░░░[/][bold #ffab00]██████████████[/][bold #ffffff]░░░[/][bold #aa00ff]▓▓▓▓[/]",
+        "[bold #d500f9]           ▓▓▓▓[/][bold #ffffff]░░░░░░░░░░░░░░░[/][bold #d500f9]▓▓▓▓[/]",
+        "[bold #e040fb]            ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓[/]",
+        "[bold #ea80fc]              ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓[/]",
+        "[bold #f48fb1]                ▓▓▓▓▓▓▓▓▓▓▓▓▓[/]",
+        "[bold #f8bbd0]                  ▓▓▓▓▓▓▓▓▓[/]",
+        "[bold #fce4ec]                    ▓▓▓▓▓[/]",
+        "[bold #ffffff]                      ▓[/]",
+    ]
+
+    # CLOQ text with rainbow gradient per line
+    logo_text = [
+        "",
+        "[bold #00e5ff]         ██████╗[/][bold #00bfa5]██╗[/][bold #64dd17]      ██████╗ [/][bold #ffd600] ██████╗[/]",
+        "[bold #00e5ff]        ██╔════╝[/][bold #00bfa5]██║[/][bold #64dd17]     ██╔═══██╗[/][bold #ffd600]██╔═══██╗[/]",
+        "[bold #00b8d4]        ██║     [/][bold #00bfa5]██║[/][bold #64dd17]     ██║   ██║[/][bold #ffd600]██║   ██║[/]",
+        "[bold #0091ea]        ██║     [/][bold #00bfa5]██║[/][bold #64dd17]     ██║   ██║[/][bold #ffab00]██║▄▄ ██║[/]",
+        "[bold #304ffe]        ╚██████╗[/][bold #00bfa5]███████╗[/][bold #64dd17]╚██████╔╝[/][bold #ff6d00]╚██████╔╝[/]",
+        "[bold #6200ea]         ╚═════╝[/][bold #00bfa5]╚══════╝[/][bold #64dd17] ╚═════╝ [/][bold #ff6d00] ╚══▀▀═╝[/]",
+    ]
+
+    # Tagline box with gradient border
+    tagline = [
+        "",
+        "[#4dd0e1]      ┌─────────────────────────────────────────┐[/]",
+        "[#4dd0e1]      │[/]  [bold #ff8a65]🔒[/] [bold white]Your secrets stay local.[/]               [#4dd0e1]│[/]",
+        "[#4dd0e1]      │[/]  [bold #66bb6a]🧠[/] [bold white]Your LLM gets clean context.[/]           [#4dd0e1]│[/]",
+        "[#4dd0e1]      │[/]  [bold #42a5f5]⚡[/] [bold white]Zero config. Zero latency. Zero cost.[/]  [#4dd0e1]│[/]",
+        "[#4dd0e1]      └─────────────────────────────────────────┘[/]",
+    ]
+
+    return "\n".join(shield + logo_text + tagline)
+
+
+def print_banner(show_shield: bool = True) -> None:
+    """Print the Cloq colorful pixel-art welcome banner.
 
     Args:
-        show_shield: If True, render the full pixel-art shield above the logo.
+        show_shield: If True (default), render the full pixel-art shield.
+                     If False, show only the CLOQ text logo.
     """
     console.print()
-    if show_shield:
-        console.print(SHIELD_ART)
-    console.print(PIXEL_LOGO)
+    banner = _build_colorful_banner()
+    console.print(banner)
+    console.print()
     console.print(
         f"  [dim]Version {VERSION_STR}  •  "
-        f"Python {{}} on {{}}"
-        f"[/dim]\n".format(
-            __import__("platform").python_version(),
-            __import__("platform").system(),
-        )
+        f"Python {platform.python_version()} on {platform.system()}"
+        f"[/dim]\n"
     )
 
 
