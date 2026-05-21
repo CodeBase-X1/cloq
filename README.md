@@ -1,115 +1,207 @@
 <div align="center">
 
-<img src="assets/logo.png" width="180" alt="Cloq" />
+<img src="assets/logo.gif" width="180" alt="Cloq" />
 
 # Cloq
 
 **Your secrets stay local. Your LLM gets the context.**
 
-Cloq is a lightweight local proxy that sits between your IDE and any cloud LLM.  
-It detects API keys, PII, and internal IPs — replaces them with reversible tags — and restores them in the response. All on your machine.
+A local-first context sanitizer that sits between your IDE and the cloud LLM.
+It detects API keys, PII, and internal IPs — replaces them with reversible tags — and restores them in the response.
+Nothing sensitive ever leaves your machine.
 
-[![CI](https://img.shields.io/github/actions/workflow/status/CodeBase-X1/cloq/ci.yml?branch=main&style=flat-square&logo=github&label=CI)](https://github.com/CodeBase-X1/cloq/actions)
-[![PyPI](https://img.shields.io/pypi/v/cloq?style=flat-square&logo=pypi&logoColor=white&color=0ea5e9)](https://pypi.org/project/cloq)
-[![Python](https://img.shields.io/pypi/pyversions/cloq?style=flat-square&logo=python&logoColor=white)](https://pypi.org/project/cloq)
-[![License](https://img.shields.io/badge/license-Apache_2.0-green?style=flat-square)](LICENSE)
-[![Stars](https://img.shields.io/github/stars/CodeBase-X1/cloq?style=flat-square&logo=github)](https://github.com/CodeBase-X1/cloq/stargazers)
+[![CI](https://img.shields.io/github/actions/workflow/status/CodeBase-X1/cloq/ci.yml?branch=main&style=for-the-badge&logo=github&label=CI&color=22c55e)](https://github.com/CodeBase-X1/cloq/actions)
+[![Python](https://img.shields.io/badge/python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://pypi.org/project/cloq)
+[![License](https://img.shields.io/badge/license-Apache_2.0-0ea5e9?style=for-the-badge)](LICENSE)
+[![Stars](https://img.shields.io/github/stars/CodeBase-X1/cloq?style=for-the-badge&logo=github&color=f59e0b)](https://github.com/CodeBase-X1/cloq/stargazers)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-ff69b4?style=for-the-badge)](CONTRIBUTING.md)
+
+[Quick Start](#-quick-start) · [How It Works](#-how-it-works) · [Features](#-features) · [Providers](#-supported-providers) · [Configuration](#%EF%B8%8F-configuration) · [Contributing](#-contributing)
 
 </div>
 
 ---
 
-## Why Cloq?
+## 🎯 The Problem
 
-Developers paste secrets into LLM prompts every day — AWS keys, database URLs, internal IPs, customer emails. Most don't even realize it. Enterprise security teams do, and they block AI tools because of it.
+Developers paste secrets into LLM prompts every day. AWS keys, database credentials, customer emails, internal IPs — most don't even realize it. Enterprise security teams know, and they block AI tools entirely because of it.
 
-Cloq solves this **without changing your workflow**.
+**Cloq eliminates this risk without changing your workflow.**
 
-```
-Before → "Fix my DB at 10.0.1.50:5432 using key AKIAIOSFODNN7EXAMPLE"
-After  → "Fix my DB at [INTERNAL_IP_1] using key [AWS_ACCESS_KEY_1]"
-                                                    ↑ LLM sees this
-Response restored locally before it reaches you ────┘
+```diff
+- "Fix the bug. DB is at 10.0.1.50:5432 and key is AKIAIOSFODNN7EXAMPLE"
++ "Fix the bug. DB is at [INTERNAL_IP_1] and key is [AWS_ACCESS_KEY_1]"
+                                              ↑
+                     Cloud LLM only sees sanitized tags
+                     Real values restored locally on response
 ```
 
 ---
 
-## Install
+## 🚀 Quick Start
 
 ```bash
+# Install
 pip install cloq
-```
 
-## Quickstart
-
-```bash
-# 1. Start the proxy (runs on localhost:8989)
+# Start the local proxy
 cloq start
 
-# 2. Point your LLM client to Cloq instead
+# Point your LLM client to Cloq
 export OPENAI_BASE_URL=http://localhost:8989
 
-# 3. Use your tools normally — Cloq handles the rest
+# Done. Use your tools as normal.
 ```
 
-That's it. No code changes. No new SDK. Just redirect your base URL.
+No code changes. No new SDK. Just redirect the base URL.
 
 ---
 
-## What gets detected
+## ⚙️ How It Works
 
-| Category | Examples |
-|---|---|
-| **Cloud keys** | AWS (`AKIA…`), Google (`AIza…`), GitHub (`ghp_…`), Stripe (`sk_live_…`), Slack tokens |
-| **PII** | Emails, phone numbers, credit cards, SSNs |
-| **Infrastructure** | Private IPs (RFC 1918), internal hostnames, DB connection strings, JWTs |
-| **Generic secrets** | High-entropy strings, private keys (RSA/EC/PGP), `.env`-style assignments |
+Cloq runs as a **transparent local proxy** on your machine. Every LLM API call passes through it automatically.
 
-Custom patterns are supported via `.cloq.yml`.
+```
+┌──────────┐         ┌─────────────────────────┐         ┌──────────┐
+│          │         │       Cloq Proxy         │         │          │
+│  Your    │  ────►  │                           │  ────►  │  Cloud   │
+│  IDE /   │         │  1. Intercept request     │         │  LLM     │
+│  CLI /   │         │  2. Detect secrets + PII  │         │  (GPT,   │
+│  App     │  ◄────  │  3. Replace → [TAG_1]     │  ◄────  │  Claude, │
+│          │         │  4. Forward sanitized     │         │  Gemini) │
+│          │         │  5. Restore real values   │         │          │
+└──────────┘         └─────────────────────────┘         └──────────┘
+                      ↑ Everything stays local
+```
+
+**Step by step:**
+
+1. **Intercept** — Cloq captures the outgoing API request
+2. **Detect** — A pipeline of detectors scans all text fields for sensitive data
+3. **Tag** — Each detected entity gets a semantic tag: `[AWS_KEY_1]`, `[EMAIL_ADDRESS_1]`, `[INTERNAL_IP_1]`
+4. **Forward** — The sanitized (safe) request goes to the cloud LLM
+5. **Restore** — When the LLM responds, tags are replaced back with real values
+6. **Return** — Your tool receives the complete, restored response
+
+The same value always maps to the same tag within a session, so the LLM can reason about relationships ("use `[DB_HOST_1]` with `[AWS_KEY_1]`") without ever seeing the real data.
 
 ---
 
-## Supported providers
+## ✨ Features
 
-Works with any provider — just set the base URL:
+### 🔐 Detection Engine
 
-| Provider | Base URL to set |
-|---|---|
-| OpenAI | `http://localhost:8989` |
-| Anthropic | `http://localhost:8989` |
-| Google Gemini | `http://localhost:8989` |
-| Azure OpenAI | `http://localhost:8989` |
-| Groq / Together / Ollama | `http://localhost:8989` |
+Three pluggable detectors that run as a pipeline:
 
----
+| Detector | What It Finds | Examples |
+|:---|:---|:---|
+| **Secrets** | API keys, tokens, credentials | AWS `AKIA...`, GitHub `ghp_...`, Stripe `sk_live_...`, Google `AIza...`, Slack `xox...`, JWTs, private keys (RSA/EC/PGP), connection strings (Postgres, MongoDB, Redis, JDBC) |
+| **PII** | Personal data | Emails, phone numbers, credit cards (Visa/MC/Amex), SSNs, IBAN codes. Uses [Microsoft Presidio](https://github.com/microsoft/presidio) when installed, falls back to regex |
+| **Network** | Infrastructure details | Private IPs (RFC 1918: `10.x`, `172.16-31.x`, `192.168.x`), IPv6 link-local, localhost, internal hostnames via configurable domain patterns |
 
-## More commands
+Plus **entropy-based detection** for generic high-entropy strings that don't match known patterns.
 
-```bash
-# Scan a file for secrets without running the proxy
-cloq scan path/to/file.py
+### 🔄 Reversible Tagging
 
-# Check if the proxy is running
-cloq status
+Not just `<REDACTED>` — Cloq uses **semantic, indexed tags** that preserve meaning for the LLM:
 
-# Generate a config file
-cloq config init
+```
+[AWS_ACCESS_KEY_1]    →  The LLM knows this is a credential
+[INTERNAL_IP_1]       →  The LLM knows this is a host address
+[EMAIL_ADDRESS_2]     →  The LLM can distinguish between two emails
+```
 
-# Run a self-test
-cloq test
+Same value always maps to the same tag (idempotent within a session).
+
+### 📡 Streaming Support
+
+Full SSE streaming support with intelligent buffering — handles tags that are split across chunk boundaries. Adds < 50ms latency.
+
+### 🔌 Plugin Architecture
+
+Add your own detectors for organization-specific patterns:
+
+```python
+from cloq.detection.base import BaseDetector, DetectionResult
+
+class MyDetector(BaseDetector):
+    name = "my_detector"
+
+    def detect(self, text: str) -> list[DetectionResult]:
+        # Your custom detection logic
+        ...
+```
+
+### 📋 Audit Logging
+
+JSON Lines audit log that records **what type** of data was sanitized, but **never the actual values**:
+
+```json
+{"action":"sanitized","entity_type":"AWS_ACCESS_KEY","detector":"secrets","tag":"[AWS_ACCESS_KEY_1]","timestamp":"2025-07-15T10:30:00Z"}
 ```
 
 ---
 
-## Configuration
+## 🔌 Supported Providers
+
+Works with **any** LLM provider. Just set the base URL to `http://localhost:8989`:
+
+| Provider | Format | Status |
+|:---|:---|:---:|
+| **OpenAI** (GPT-4o, o1, o3) | `/v1/chat/completions` | ✅ |
+| **Anthropic** (Claude 3.5/4) | `/v1/messages` | ✅ |
+| **Google Gemini** | `:generateContent` | ✅ |
+| **Azure OpenAI** | `/openai/deployments/*/chat/completions` | ✅ |
+| **Groq** | OpenAI-compatible | ✅ |
+| **Together AI** | OpenAI-compatible | ✅ |
+| **Ollama** | OpenAI-compatible | ✅ |
+| **Any OpenAI-compatible API** | `/v1/chat/completions` | ✅ |
+
+---
+
+## 🛠️ CLI Commands
 
 ```bash
-cloq config init   # creates .cloq.yml in your project root
+cloq start                  # Start the proxy server
+cloq start --port 9090      # Custom port
+cloq start --verbose        # Debug logging
+
+cloq scan path/to/file.py   # Scan a file for secrets (standalone)
+cloq status                 # Check if proxy is running + stats
+cloq test                   # Run a self-test with sample data
+
+cloq config init            # Generate a .cloq.yml template
+cloq config show            # Show resolved configuration
+```
+
+Example scan output:
+
+```
+               Scan Results: credentials.env
+┏━━━━┳━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━┳━━━━━━━━━━┓
+┃ #  ┃ Type           ┃ Value                ┃ Score ┃ Detector ┃
+┡━━━━╇━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━╇━━━━━━━━━━┩
+│ 1  │ INTERNAL_IP    │ 10.0●●●●●●5432       │   95% │ network  │
+│ 2  │ AWS_ACCESS_KEY │ AKIA●●●●●●●●●●●●MPLE │   98% │ secrets  │
+│ 3  │ EMAIL_ADDRESS  │ dev@●●●●●●●.com      │   80% │ pii      │
+└────┴────────────────┴──────────────────────┴───────┴──────────┘
+
+  3 sensitive item(s) detected
+  Scanned in 0.7ms
+```
+
+---
+
+## ⚙️ Configuration
+
+```bash
+cloq config init   # Creates .cloq.yml in your project root
 ```
 
 ```yaml
 # .cloq.yml
 proxy:
+  host: 127.0.0.1
   port: 8989
 
 detection:
@@ -121,61 +213,142 @@ detection:
         entity_type: INTERNAL_TOKEN
   pii:
     enabled: true
+    confidence_threshold: 0.7
+    entities: [EMAIL_ADDRESS, PHONE_NUMBER, CREDIT_CARD]
   network:
     enabled: true
     internal_domains:
       - "*.internal.mycompany.com"
+      - "*.corp.mycompany.net"
+
+allowlist:
+  values: ["api.openai.com", "api.anthropic.com"]
+
+logging:
+  audit:
+    enabled: true
+    path: "~/.cloq/audit.log"
 ```
 
-Config resolves in this order (highest wins): CLI flags → `CLOQ_*` env vars → `.cloq.yml` → defaults.
+**Config priority** (highest wins): CLI flags → `CLOQ_*` env vars → `.cloq.yml` → `~/.config/cloq/config.yml` → defaults
 
 ---
 
-## Use as a library
+## 🐍 Python API
+
+Use Cloq as a library without the proxy:
 
 ```python
 from cloq.detection.pipeline import DetectionPipeline
 from cloq.detection.secrets import SecretsDetector
 from cloq.detection.pii import PIIDetector
+from cloq.detection.network import NetworkDetector
 from cloq.sanitizer.engine import SanitizationSession, sanitize, restore
 
-pipeline = DetectionPipeline([SecretsDetector(), PIIDetector()])
+# Build a detection pipeline
+pipeline = DetectionPipeline([
+    SecretsDetector(),
+    PIIDetector(),
+    NetworkDetector(internal_domains=["*.internal.company.com"]),
+])
 
-text = "Email dev@corp.com, key AKIAIOSFODNN7EXAMPLE"
-results, _ = pipeline.run(text)
+# Detect + sanitize
+text = "DB at 10.0.1.50:5432, key AKIAIOSFODNN7EXAMPLE, email dev@corp.com"
+results, metrics = pipeline.run(text)
 
 session = SanitizationSession(session_id="req-1")
-clean = sanitize(text, results, session)
-# → "Email [EMAIL_ADDRESS_1], key [AWS_ACCESS_KEY_1]"
+sanitized = sanitize(text, results, session)
+# → "DB at [INTERNAL_IP_1], key [AWS_ACCESS_KEY_1], email [EMAIL_ADDRESS_1]"
 
 # After LLM responds, restore the real values
-original = restore(clean, session)
+response = "[INTERNAL_IP_1] is healthy. Use [AWS_ACCESS_KEY_1] to connect."
+restored = restore(response, session)
+# → "10.0.1.50:5432 is healthy. Use AKIAIOSFODNN7EXAMPLE to connect."
 ```
 
 ---
 
-## Security model
+## 🏢 Enterprise Value
 
-- **Nothing leaves your machine unredacted.** The proxy runs entirely locally.
-- **In-memory only.** Tag-to-original mappings are never written to disk.
-- **Audit log records actions, never values.** You can prove compliance without storing secrets.
-- **No telemetry.** Cloq never phones home.
+| Concern | How Cloq Solves It |
+|:---|:---|
+| **Data leakage** | Sensitive data is replaced before it leaves the machine |
+| **Compliance** | Audit log proves what was sanitized without storing secrets |
+| **Zero trust** | Nothing goes to the cloud unredacted — ever |
+| **No telemetry** | Cloq never phones home. Fully offline capable |
+| **Custom policies** | Add organization-specific patterns and domain rules |
+| **Developer experience** | Zero friction — one command, no code changes |
 
 ---
 
-## Contributing
+## 🛡️ Security Model
+
+- **Local-only processing** — The proxy runs entirely on your machine
+- **In-memory sessions** — Tag ↔ original mappings are never written to disk
+- **Audit without secrets** — Logs record entity types and actions, never actual values
+- **No telemetry** — Zero external network calls from Cloq itself
+- **Minimal dependencies** — Small attack surface by design
+
+See [SECURITY.md](SECURITY.md) for our vulnerability disclosure policy.
+
+---
+
+## 📦 Project Structure
+
+```
+src/cloq/
+├── cli/           # Typer + Rich CLI (start, scan, status, test, config)
+├── config/        # Pydantic v2 config schema + YAML/env loader
+├── detection/     # Pluggable detector pipeline
+│   ├── secrets.py # 15+ regex patterns + Shannon entropy
+│   ├── pii.py     # Presidio integration + regex fallback
+│   └── network.py # RFC 1918 IPs, internal hostnames
+├── proxy/         # FastAPI + httpx async proxy server
+│   ├── providers.py  # OpenAI, Anthropic, Google, Azure adapters
+│   └── streaming.py  # SSE streaming with cross-boundary restoration
+├── sanitizer/     # Reversible tag↔original engine + session store
+└── logging/       # JSON Lines audit logger
+```
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions of all kinds!
 
 ```bash
 git clone https://github.com/CodeBase-X1/cloq.git
 cd cloq
 pip install -e ".[dev]"
-make test
+make test     # Run 55 tests
+make lint     # Ruff linting
+make format   # Auto-format
 ```
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for full guidelines.
+
+---
+
+## 🗺️ Roadmap
+
+- [x] Core detection engine (secrets, PII, network)
+- [x] Reversible sanitization with semantic tags
+- [x] Multi-provider proxy (OpenAI, Anthropic, Google, Azure)
+- [x] SSE streaming support
+- [x] CLI with Rich terminal output
+- [ ] VS Code extension
+- [ ] JetBrains plugin
+- [ ] Local ML model integration (spaCy NER)
+- [ ] Web dashboard for monitoring
+- [ ] Docker image for team deployment
+- [ ] GDPR/HIPAA compliance report generation
 
 ---
 
 <div align="center">
-<sub>Apache 2.0 · Built by the <a href="https://github.com/CodeBase-X1">CodeBase-X1</a> community</sub>
+
+**Apache 2.0** · Built by the [CodeBase-X1](https://github.com/CodeBase-X1) community
+
+<sub>If Cloq helped you, consider giving it a ⭐</sub>
+
 </div>
