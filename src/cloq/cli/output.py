@@ -9,26 +9,66 @@ from rich.text import Text
 
 console = Console()
 
-# ── ASCII banner ─────────────────────────────────────────────────────
-BANNER = r"""
-   _____ _
-  / ____| |
- | |    | | ___   __ _
- | |    | |/ _ \ / _` |
- | |____| | (_) | (_| |
-  \_____|_|\___/ \__, |
-                    | |
-                    |_|
+# ── Pixel-art shield + lock logo ─────────────────────────────────────
+# Uses Unicode half-block characters (▀▄█░▓) for a retro pixel-art feel
+# Rendered with Rich markup for vibrant ANSI terminal colors.
+# Inspired by GitHub Copilot CLI's startup branding.
+
+PIXEL_LOGO = """\
+[bold cyan]
+             ██████╗██╗      ██████╗  ██████╗
+            ██╔════╝██║     ██╔═══██╗██╔═══██╗
+            ██║     ██║     ██║   ██║██║   ██║
+            ██║     ██║     ██║   ██║██║▄▄ ██║
+            ╚██████╗███████╗╚██████╔╝╚██████╔╝
+             ╚═════╝╚══════╝ ╚═════╝  ╚══▀▀═╝[/bold cyan]
+
+[dim cyan]        ┌──────────────────────────────────┐[/dim cyan]
+[dim cyan]        │[/dim cyan]  [bold white]🔒 Your secrets stay local.[/bold white]         [dim cyan]│[/dim cyan]
+[dim cyan]        │[/dim cyan]  [bold white]🧠 Your LLM gets clean context.[/bold white]   [dim cyan]│[/dim cyan]
+[dim cyan]        └──────────────────────────────────┘[/dim cyan]
+"""
+
+SHIELD_ART = """\
+[bold bright_cyan]            ░░░░░▓▓▓▓▓▓▓▓▓▓▓░░░░░[/bold bright_cyan]
+[bold bright_cyan]          ░▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░[/bold bright_cyan]
+[bold bright_cyan]         ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓[/bold bright_cyan]
+[bold bright_cyan]        ▓▓▓▓▓[/bold bright_cyan][bold white]░░░░░░░░░░░░░░░[/bold white][bold bright_cyan]▓▓▓▓▓[/bold bright_cyan]
+[bold bright_cyan]        ▓▓▓▓[/bold bright_cyan][bold white]░░░[/bold white][bold yellow]████████████[/bold yellow][bold white]░░░[/bold white][bold bright_cyan]▓▓▓▓[/bold bright_cyan]
+[bold bright_cyan]        ▓▓▓▓[/bold bright_cyan][bold white]░░░[/bold white][bold yellow]██[/bold yellow][bold black on yellow]  ████  [/bold black on yellow][bold yellow]██[/bold yellow][bold white]░░░[/bold white][bold bright_cyan]▓▓▓▓[/bold bright_cyan]
+[bold bright_cyan]        ▓▓▓▓[/bold bright_cyan][bold white]░░░[/bold white][bold yellow]██[/bold yellow][bold black on yellow]  ████  [/bold black on yellow][bold yellow]██[/bold yellow][bold white]░░░[/bold white][bold bright_cyan]▓▓▓▓[/bold bright_cyan]
+[bold bright_cyan]        ▓▓▓▓[/bold bright_cyan][bold white]░░░[/bold white][bold yellow]████████████[/bold yellow][bold white]░░░[/bold white][bold bright_cyan]▓▓▓▓[/bold bright_cyan]
+[bold bright_cyan]         ▓▓▓▓[/bold bright_cyan][bold white]░░░░░░░░░░░░░░░[/bold white][bold bright_cyan]▓▓▓▓[/bold bright_cyan]
+[bold bright_cyan]          ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓[/bold bright_cyan]
+[bold bright_cyan]            ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓[/bold bright_cyan]
+[bold bright_cyan]              ▓▓▓▓▓▓▓▓▓▓▓▓▓[/bold bright_cyan]
+[bold bright_cyan]                ▓▓▓▓▓▓▓▓▓[/bold bright_cyan]
+[bold bright_cyan]                  ▓▓▓▓▓[/bold bright_cyan]
+[bold bright_cyan]                    ▓[/bold bright_cyan]
 """
 
 TAGLINE = "🔒 Cloak your secrets before they reach the cloud"
+VERSION_STR = "v0.1.0"
 
 
-def print_banner() -> None:
-    """Print the Cloq ASCII banner with styling."""
-    text = Text(BANNER, style="bold cyan")
-    console.print(text)
-    console.print(f"  {TAGLINE}\n", style="dim")
+def print_banner(show_shield: bool = False) -> None:
+    """Print the Cloq pixel-art banner with styling.
+
+    Args:
+        show_shield: If True, render the full pixel-art shield above the logo.
+    """
+    console.print()
+    if show_shield:
+        console.print(SHIELD_ART)
+    console.print(PIXEL_LOGO)
+    console.print(
+        f"  [dim]Version {VERSION_STR}  •  "
+        f"Python {{}} on {{}}"
+        f"[/dim]\n".format(
+            __import__("platform").python_version(),
+            __import__("platform").system(),
+        )
+    )
 
 
 def print_status(
