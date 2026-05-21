@@ -1,0 +1,43 @@
+# Example config — save as .cloq.yml in your project root
+proxy:
+  host: 127.0.0.1
+  port: 8989
+
+detection:
+  secrets:
+    enabled: true
+    # Add custom secret patterns
+    custom_patterns:
+      - name: "custom_internal_token"
+        regex: "INT-[A-Z0-9]{32}"
+        entity_type: "INTERNAL_TOKEN"
+        confidence: 0.90
+  pii:
+    enabled: true
+    confidence_threshold: 0.7
+    entities:
+      - EMAIL_ADDRESS
+      - PHONE_NUMBER
+      - CREDIT_CARD
+  network:
+    enabled: true
+    internal_domains:
+      - "*.internal.mycompany.com"
+      - "*.corp.mycompany.net"
+
+sanitizer:
+  tag_format: "[{entity_type}_{index}]"
+  session_ttl_seconds: 3600
+
+allowlist:
+  values:
+    - "api.openai.com"
+    - "api.anthropic.com"
+  patterns:
+    - "^https://docs\\..*"
+
+logging:
+  level: INFO
+  audit:
+    enabled: true
+    path: "~/.cloq/audit.log"
