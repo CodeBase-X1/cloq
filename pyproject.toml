@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "cloq"
-version = "0.1.0"
+version = "0.1.1"
 description = "Local-first context sanitizer — cloak your secrets before they reach the cloud"
 readme = "README.md"
 license = "Apache-2.0"
@@ -83,11 +83,11 @@ cloq = "cloq.cli.main:app"
 cloq-cli = "cloq.cli.main:app"
 
 [project.urls]
-Homepage = "https://github.com/cloq-dev/cloq"
-Documentation = "https://cloq-dev.github.io/cloq"
-Repository = "https://github.com/cloq-dev/cloq"
-Issues = "https://github.com/cloq-dev/cloq/issues"
-Changelog = "https://github.com/cloq-dev/cloq/blob/main/CHANGELOG.md"
+Homepage = "https://github.com/CodeBase-X1/cloq"
+Documentation = "https://github.com/CodeBase-X1/cloq#readme"
+Repository = "https://github.com/CodeBase-X1/cloq"
+Issues = "https://github.com/CodeBase-X1/cloq/issues"
+Changelog = "https://github.com/CodeBase-X1/cloq/blob/main/CHANGELOG.md"
 
 # ── Hatch ────────────────────────────────────────────────────────────
 [tool.hatch.build.targets.wheel]

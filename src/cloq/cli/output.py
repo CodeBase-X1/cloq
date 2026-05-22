@@ -16,7 +16,7 @@ console = Console()
 # golden key. Uses the brand palette — indigo cloak, lavender body,
 # and gold key — rendered with Rich hex-color markup.
 
-VERSION_STR = "v0.1.0"
+VERSION_STR = "v0.1.1"
 
 # Brand palette constants
 _C = "#3d3d6b"   # cloak (dark indigo)

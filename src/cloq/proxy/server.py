@@ -84,7 +84,7 @@ def create_app(config: CloqConfig | None = None) -> FastAPI:
     app = FastAPI(
         title="Cloq",
         description="Local-first context sanitizer for LLM API calls",
-        version="0.1.0",
+        version="0.1.1",
         docs_url=None,  # Disable Swagger UI in production
         redoc_url=None,
     )
@@ -110,7 +110,7 @@ def create_app(config: CloqConfig | None = None) -> FastAPI:
     # ── Health & admin endpoints ─────────────────────────────────────
     @app.get("/health")
     async def health_check() -> dict[str, str]:
-        return {"status": "healthy", "version": "0.1.0"}
+        return {"status": "healthy", "version": "0.1.1"}
 
     @app.get("/stats")
     async def get_stats() -> dict[str, Any]:

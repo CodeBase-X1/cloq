@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/logo.gif" width="260" alt="Cloq" />
+<img src="https://raw.githubusercontent.com/CodeBase-X1/cloq/main/assets/logo.gif" width="260" alt="Cloq" />
 
 # Cloq
 
