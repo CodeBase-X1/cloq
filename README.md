@@ -89,17 +89,19 @@ When running `cloq-cli`, simply select **★ Web UI (Open in Browser)**, or navi
 
 Cloq runs as a **transparent local proxy** on your machine. Every LLM API call passes through it automatically.
 
-```
-┌──────────┐         ┌─────────────────────────┐         ┌──────────┐
-│          │         │       Cloq Proxy         │         │          │
-│  Your    │  ────►  │                           │  ────►  │  Cloud   │
-│  IDE /   │         │  1. Intercept request     │         │  LLM     │
-│  CLI /   │         │  2. Detect secrets + PII  │         │  (GPT,   │
-│  App     │  ◄────  │  3. Replace → [TAG_1]     │  ◄────  │  Claude, │
-│          │         │  4. Forward sanitized     │         │  Gemini) │
-│          │         │  5. Restore real values   │         │          │
-└──────────┘         └─────────────────────────┘         └──────────┘
-                      ↑ Everything stays local
+```mermaid
+sequenceDiagram
+    participant Client as IDE / CLI / App
+    participant Cloq as Cloq Proxy (Local)
+    participant LLM as Cloud LLM (GPT, Claude, Gemini)
+    
+    Note over Client,Cloq: Local Machine (Private & Secure)
+    Client->>Cloq: 1. API Request (with secrets)
+    Note over Cloq: 2. Detect sensitive data<br/>3. Replace with [TAGS]
+    Cloq->>LLM: 4. Forward sanitized request
+    LLM-->>Cloq: 5. Response (with tags)
+    Note over Cloq: 6. Restore real values locally
+    Cloq-->>Client: 7. Return complete response
 ```
 
 **Step by step:**
