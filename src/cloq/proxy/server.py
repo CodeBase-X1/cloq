@@ -107,7 +107,16 @@ def create_app(config: CloqConfig | None = None) -> FastAPI:
         "start_time": time.time(),
     }
 
-    # ── Health & admin endpoints ─────────────────────────────────────
+    # ── Health, UI & admin endpoints ─────────────────────────────────
+    from fastapi.staticfiles import StaticFiles
+    import os
+
+    static_dir = os.path.join(os.path.dirname(__file__), "static")
+    os.makedirs(static_dir, exist_ok=True)
+    
+    # Mount the UI directory at /ui
+    app.mount("/ui", StaticFiles(directory=static_dir, html=True), name="ui")
+
     @app.get("/health")
     async def health_check() -> dict[str, str]:
         return {"status": "healthy", "version": "0.1.1"}

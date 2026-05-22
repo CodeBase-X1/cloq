@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloq Dashboard</title>
+    <style>
+        :root {
+            --bg-color: #0f0f1a;
+            --card-bg: rgba(61, 61, 107, 0.2);
+            --card-border: rgba(184, 196, 232, 0.1);
+            --text-main: #ffffff;
+            --text-muted: #b8c4e8;
+            --accent-gold: #f0a030;
+            --accent-indigo: #3d3d6b;
+            --accent-green: #4ade80;
+            --accent-red: #f87171;
+            --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-family);
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(61, 61, 107, 0.15), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(240, 160, 48, 0.05), transparent 25%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .logo-icon {
+            font-size: 32px;
+        }
+
+        .status-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(74, 222, 128, 0.1);
+            border: 1px solid rgba(74, 222, 128, 0.2);
+            border-radius: 20px;
+            color: var(--accent-green);
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent-green);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent-green);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(74, 222, 128, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 24px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .card h3 {
+            margin: 0 0 15px 0;
+            color: var(--text-muted);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .value {
+            font-size: 36px;
+            font-weight: 700;
+            margin: 0 0 5px 0;
+            display: flex;
+            align-items: baseline;
+            gap: 5px;
+        }
+
+        .value.gold { color: var(--accent-gold); }
+        .value.green { color: var(--accent-green); }
+        .value.red { color: var(--accent-red); }
+
+        .unit {
+            font-size: 16px;
+            color: var(--text-muted);
+            font-weight: normal;
+        }
+
+        .stats-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .stats-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--card-border);
+            font-size: 15px;
+        }
+
+        .stats-list li:last-child {
+            border-bottom: none;
+        }
+
+        .stats-list .label {
+            color: var(--text-muted);
+        }
+
+        .stats-list .data {
+            font-weight: 600;
+        }
+
+        .hero-banner {
+            background: linear-gradient(135deg, rgba(61, 61, 107, 0.4), rgba(240, 160, 48, 0.1));
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 40px;
+            border: 1px solid var(--card-border);
+        }
+
+        .hero-banner h2 {
+            margin: 0 0 10px 0;
+            font-size: 24px;
+            color: var(--text-main);
+        }
+
+        .hero-banner p {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <span class="logo-icon">👻</span> Cloq Dashboard
+            </div>
+            <div class="status-badge" id="proxy-status">
+                <div class="status-dot"></div>
+                Proxy Active
+            </div>
+        </header>
+
+        <div class="hero-banner">
+            <h2>Your secrets stay local. Your LLM gets the context.</h2>
+            <p>Cloq is intercepting, sanitizing, and caching your prompts in real-time.</p>
+        </div>
+
+        <div class="grid">
+            <!-- Cost Savings -->
+            <div class="card">
+                <h3>💰 Estimated Savings</h3>
+                <div class="value gold">$<span id="dollars-saved">0.000</span></div>
+                <div class="unit" style="margin-top: 10px; font-size: 14px;">
+                    <span id="tokens-saved" style="color: var(--text-main); font-weight: bold;">0</span> tokens saved
+                </div>
+            </div>
+
+            <!-- Cache Performance -->
+            <div class="card">
+                <h3>⚡ Cache Performance</h3>
+                <div class="value green"><span id="hit-rate">0.0</span><span class="unit">%</span></div>
+                <div class="unit" style="margin-top: 10px; font-size: 14px;">
+                    <span id="cache-hits" style="color: var(--text-main); font-weight: bold;">0</span> hits / 
+                    <span id="cache-misses" style="color: var(--text-main); font-weight: bold;">0</span> misses
+                </div>
+            </div>
+
+            <!-- Sanitization Stats -->
+            <div class="card">
+                <h3>🛡️ Data Protection</h3>
+                <div class="value red"><span id="entities-sanitized">0</span></div>
+                <div class="unit" style="margin-top: 10px; font-size: 14px;">
+                    Entities masked before reaching cloud
+                </div>
+                <div style="margin-top: 10px; font-size: 14px; color: var(--accent-green);">
+                    <span id="entities-restored" style="font-weight: bold;">0</span> entities restored
+                </div>
+            </div>
+        </div>
+
+        <div class="grid" style="grid-template-columns: 1fr;">
+            <div class="card">
+                <h3>⚙️ Proxy Engine Details</h3>
+                <ul class="stats-list">
+                    <li>
+                        <span class="label">Total Requests Processed</span>
+                        <span class="data" id="total-requests">0</span>
+                    </li>
+                    <li>
+                        <span class="label">Active Sessions</span>
+                        <span class="data" id="active-sessions">0</span>
+                    </li>
+                    <li>
+                        <span class="label">Uptime</span>
+                        <span class="data" id="uptime">0s</span>
+                    </li>
+                    <li>
+                        <span class="label">Proxy Endpoint</span>
+                        <span class="data">http://127.0.0.1:8989</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function formatUptime(seconds) {
+            if (seconds > 3600) return (seconds / 3600).toFixed(1) + 'h';
+            if (seconds > 60) return (seconds / 60).toFixed(1) + 'm';
+            return seconds.toFixed(0) + 's';
+        }
+
+        async function fetchStats() {
+            try {
+                const response = await fetch('/stats');
+                if (!response.ok) throw new Error('Network response was not ok');
+                const data = await response.json();
+                
+                document.getElementById('dollars-saved').textContent = data.estimated_dollars_saved.toFixed(3);
+                document.getElementById('tokens-saved').textContent = data.estimated_tokens_saved.toLocaleString();
+                document.getElementById('hit-rate').textContent = data.cache_hit_rate_pct.toFixed(1);
+                document.getElementById('cache-hits').textContent = data.cache_hits.toLocaleString();
+                document.getElementById('cache-misses').textContent = data.cache_misses.toLocaleString();
+                document.getElementById('entities-sanitized').textContent = data.entities_sanitized.toLocaleString();
+                document.getElementById('entities-restored').textContent = data.entities_restored.toLocaleString();
+                document.getElementById('total-requests').textContent = data.requests_processed.toLocaleString();
+                document.getElementById('active-sessions').textContent = data.active_sessions.toLocaleString();
+                document.getElementById('uptime').textContent = formatUptime(data.uptime_seconds);
+
+                document.getElementById('proxy-status').innerHTML = '<div class="status-dot"></div> Proxy Active';
+                document.getElementById('proxy-status').style.background = 'rgba(74, 222, 128, 0.1)';
+                document.getElementById('proxy-status').style.borderColor = 'rgba(74, 222, 128, 0.2)';
+                document.getElementById('proxy-status').style.color = 'var(--accent-green)';
+            } catch (error) {
+                console.error('Error fetching stats:', error);
+                document.getElementById('proxy-status').innerHTML = 'Offline';
+                document.getElementById('proxy-status').style.background = 'rgba(248, 113, 113, 0.1)';
+                document.getElementById('proxy-status').style.borderColor = 'rgba(248, 113, 113, 0.2)';
+                document.getElementById('proxy-status').style.color = 'var(--accent-red)';
+            }
+        }
+
+        // Fetch immediately and then every second
+        fetchStats();
+        setInterval(fetchStats, 1000);
+    </script>
+</body>
+</html>
