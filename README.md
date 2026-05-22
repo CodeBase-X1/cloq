@@ -63,22 +63,25 @@ No cloud upstream call, zero token usage, completely private, and blazing fast.
 ## 🚀 Quick Start
 
 ```bash
-# Install
+# 1. Install globally via pip
 pip install cloq
 
-# Start the local proxy
-cloq start
-
-# Point your LLM client to Cloq
-export OPENAI_BASE_URL=http://localhost:8989
-
-# Launch the live Developer HUD & Savings Dashboard in another terminal!
-cloq dashboard
-
-# Done. Use your tools as normal.
+# 2. Run the interactive CLI to start the proxy
+cloq-cli
 ```
 
-No code changes. No new SDK. Just redirect the base URL.
+*This will launch an interactive menu where you can choose to open the Web UI or run directly in the terminal.*
+
+**To use with your AI tools:**
+Just point your LLM client's Base URL to `http://127.0.0.1:8989/v1`
+
+---
+
+## 🖥️ Web UI Dashboard
+
+Cloq comes with a gorgeous, live Web UI that monitors your tokens saved, active sessions, and protected entities in real time.
+
+When running `cloq-cli`, simply select **★ Web UI (Open in Browser)**, or navigate manually to `http://127.0.0.1:8989/ui`.
 
 ---
 
@@ -186,17 +189,23 @@ Works with **any** LLM provider. Just set the base URL to `http://localhost:8989
 
 ## 🛠️ CLI Commands
 
+Cloq features a rich interactive CLI. Run `cloq-cli` with no arguments to launch the interactive menu, or use the direct commands below:
+
 ```bash
-cloq start                  # Start the proxy server
-cloq start --port 9090      # Custom port
-cloq start --verbose        # Debug logging
+# Core
+cloq-cli start                  # Start the proxy server in terminal
+cloq-cli status                 # Check if proxy is running + stats
+cloq-cli version                # Show current version
 
-cloq scan path/to/file.py   # Scan a file for secrets (standalone)
-cloq status                 # Check if proxy is running + stats
-cloq test                   # Run a self-test with sample data
+# Diagnostics & Monitoring
+cloq-cli doctor                 # Run system health checks and verify config
+cloq-cli gain                   # View live token and cost savings from cache
+cloq-cli dashboard              # Launch the live terminal HUD
 
-cloq config init            # Generate a .cloq.yml template
-cloq config show            # Show resolved configuration
+# Utilities
+cloq-cli scan path/to/file.py   # Scan a file for secrets (standalone)
+cloq-cli test                   # Run a self-test with sample data
+cloq-cli config init            # Generate a .cloq.yml template
 ```
 
 Example scan output:
