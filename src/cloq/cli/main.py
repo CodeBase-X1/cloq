@@ -34,6 +34,13 @@ config_app = typer.Typer(
 )
 app.add_typer(config_app)
 
+cache_app = typer.Typer(
+    name="cache",
+    help="Manage the Cloq prompt cache.",
+    no_args_is_help=True,
+)
+app.add_typer(cache_app)
+
 
 @app.callback()
 def main_callback(ctx: typer.Context) -> None:
@@ -309,6 +316,116 @@ def config_show(
 
     cloq_config = load_config(config_path=config)
     console.print_json(data=cloq_config.model_dump())
+
+
+@app.command()
+def version() -> None:
+    """Show the current version of Cloq."""
+    import platform
+
+    from cloq.cli.output import VERSION_STR, print_banner
+
+    print_banner(show_mascot=False)
+    console.print(f"  [bold cyan]Cloq CLI[/bold cyan] {VERSION_STR}")
+    console.print(f"  [dim]Python {platform.python_version()} on {platform.system()}[/dim]\n")
+
+
+@app.command()
+def doctor() -> None:
+    """Check if the system is correctly configured for Cloq."""
+    import platform
+    import socket
+    import sys
+    from pathlib import Path
+
+    from rich.panel import Panel
+    from rich.table import Table
+
+    from cloq.cli.output import print_banner
+
+    print_banner(show_mascot=False)
+    console.print("  [bold]Running Cloq Doctor...[/bold]\n")
+
+    table = Table(show_header=False, box=None, padding=(0, 2))
+    table.add_column(style="bold cyan")
+    table.add_column()
+
+    # Check Python version
+    py_version = platform.python_version()
+    if sys.version_info >= (3, 10):
+        table.add_row("Python Version", f"[green]✓ {py_version}[/green]")
+    else:
+        table.add_row("Python Version", f"[red]✗ {py_version} (needs 3.10+)[/red]")
+
+    # Check config file
+    config_path = Path(".cloq.yml")
+    if config_path.exists():
+        table.add_row("Configuration", f"[green]✓ Found {config_path.absolute()}[/green]")
+    else:
+        table.add_row("Configuration", "[yellow]⚠ No .cloq.yml found (using defaults)[/yellow]")
+
+    # Check proxy port
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    port_result = sock.connect_ex(("127.0.0.1", 8989))
+    if port_result == 0:
+        table.add_row("Proxy Status", "[green]✓ Running on port 8989[/green]")
+    else:
+        table.add_row("Proxy Status", "[yellow]● Stopped (Port 8989 available)[/yellow]")
+    sock.close()
+
+    console.print(
+        Panel(table, title="[bold]System Checks[/bold]", border_style="cyan", expand=False)
+    )
+    console.print()
+
+
+@app.command()
+def gain() -> None:
+    """View cost and token savings from the prompt cache."""
+    import httpx
+    from rich.panel import Panel
+    from rich.table import Table
+
+    from cloq.cli.output import print_banner, print_error
+
+    print_banner(show_mascot=False)
+    console.print("  [bold]Calculating Cloq Cache Gains...[/bold]\n")
+
+    try:
+        resp = httpx.get("http://127.0.0.1:8989/stats", timeout=2.0)
+        if resp.status_code != 200:
+            print_error("Could not fetch stats. Is the proxy running?")
+            raise typer.Exit(1)
+        stats = resp.json()
+    except httpx.ConnectError:
+        print_error("Proxy is offline. Start it first with: cloq-cli start")
+        raise typer.Exit(1)
+
+    savings_table = Table(show_header=False, box=None, padding=(0, 2))
+    savings_table.add_column(style="bold green")
+    savings_table.add_column(justify="right")
+
+    savings_table.add_row(
+        "Tokens Saved", f"[bold orange3]{stats.get('estimated_tokens_saved', 0):,}[/bold orange3]"
+    )
+    savings_table.add_row(
+        "Estimated Dollars Saved",
+        f"[bold green]${stats.get('estimated_dollars_saved', 0.0):.3f}[/bold green]",
+    )
+    savings_table.add_row("Cache Hits", f"{stats.get('cache_hits', 0)}")
+    savings_table.add_row("Cache Misses", f"{stats.get('cache_misses', 0)}")
+    savings_table.add_row("Hit Rate", f"{stats.get('cache_hit_rate_pct', 0.0):.1f}%")
+
+    console.print(
+        Panel(savings_table, title="[bold]Developer Gains[/bold]", border_style="green", expand=False)
+    )
+    console.print()
+
+
+@cache_app.command("stats")
+def cache_stats() -> None:
+    """Show detailed cache statistics."""
+    gain()
 
 
 if __name__ == "__main__":
