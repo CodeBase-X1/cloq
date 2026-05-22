@@ -52,6 +52,7 @@ dependencies = [
     "pydantic>=2.7.0",
     "pydantic-settings>=2.2.0",
     "pyyaml>=6.0.1",
+    "questionary>=2.0.1",
 ]
 
 [project.optional-dependencies]

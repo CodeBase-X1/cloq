@@ -46,12 +46,49 @@ app.add_typer(cache_app)
 def main_callback(ctx: typer.Context) -> None:
     """🔒 Cloq — Cloak your secrets before they reach the cloud."""
     if ctx.invoked_subcommand is None:
-        # No subcommand provided — show the mascot banner then help
-        print_banner()
-        console.print()
-        # Print help after the banner
-        console.print(ctx.get_help())
-        raise typer.Exit()
+        try:
+            import questionary
+            import webbrowser
+            import threading
+            import time
+            from cloq.cli.output import print_banner, VERSION_STR
+            
+            print_banner(show_mascot=False)
+            console.print("========================================")
+            console.print(f"  Choose Interface (v{VERSION_STR.lstrip('v')})")
+            console.print("  🚀 Server: http://127.0.0.1:8989")
+            console.print("========================================\n")
+            
+            choice = questionary.select(
+                "",
+                choices=[
+                    "★ Web UI (Open in Browser)",
+                    "☆ Terminal UI (Interactive CLI)",
+                    "☆ Exit"
+                ],
+                qmark="?",
+                pointer="❯"
+            ).ask()
+
+            if not choice or choice == "☆ Exit":
+                raise typer.Exit()
+                
+            if choice == "★ Web UI (Open in Browser)":
+                def open_browser():
+                    time.sleep(1.5)
+                    webbrowser.open("http://127.0.0.1:8989/ui")
+                threading.Thread(target=open_browser, daemon=True).start()
+                ctx.invoke(start)
+                
+            elif choice == "☆ Terminal UI (Interactive CLI)":
+                ctx.invoke(start)
+                
+        except ImportError:
+            # Fallback if questionary is not installed
+            print_banner()
+            console.print()
+            console.print(ctx.get_help())
+            raise typer.Exit()
 
 @app.command()
 def start(

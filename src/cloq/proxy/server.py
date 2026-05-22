@@ -117,6 +117,12 @@ def create_app(config: CloqConfig | None = None) -> FastAPI:
     # Mount the UI directory at /ui
     app.mount("/ui", StaticFiles(directory=static_dir, html=True), name="ui")
 
+    from fastapi.responses import RedirectResponse
+
+    @app.get("/ui", include_in_schema=False)
+    async def redirect_ui() -> RedirectResponse:
+        return RedirectResponse(url="/ui/index.html")
+
     @app.get("/health")
     async def health_check() -> dict[str, str]:
         return {"status": "healthy", "version": "0.1.1"}
