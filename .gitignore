@@ -47,3 +47,9 @@ site/
 # ── Cloq local data ─────────────────────────────────────────────────
 .cloq/
 *.audit.log
+
+# ── VS Code Extension ────────────────────────────────────────────────
+node_modules/
+*.vsix
+out/
+vscode-ext/dist/
